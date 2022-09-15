@@ -1,0 +1,11 @@
+input[type="text"], textarea {
+    height: 16px;
+    border: 2px solid black;
+    vertical-align: bottom;
+    font-family: pressstart2p;
+    font-size: 16px;
+    width: calc(100% - 16px);
+}
+input[type="text"]:focus, textarea:focus {outline: 2px solid white;}
+input[type="text"]::selection, textarea::selection {background: black; color: white;}
+textarea {resize: none; height: 128px;}

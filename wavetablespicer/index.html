@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wavetable spicer</title>
+        <meta charset="UTF-8"/>
+        <link rel="preload" href="/fonts/ONESIZE_.TTF" as="font" crossorigin="anonymous"/>
+        <link rel="preload" href="/fonts/ONESR___.TTF" as="font" crossorigin="anonymous"/>
+        <link rel="preload" href="/fonts/PressStart2P-Regular.ttf" as="font" crossorigin="anonymous"/>
+        <link rel="preload" href="/fonts/light_pixel-7.ttf" as="font" crossorigin="anonymous"/>
+        <link rel="preload" href="/fonts/pixel_dingbats-7.ttf" as="font" crossorigin="anonymous"/>
+        <link rel="preload" href="/fonts/PKMN-Pinball.ttf" as="font" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="/stylesheets/bit.css"/>
+        <link rel="stylesheet" href="index.css"/>
+    </head>
+    <body>
+        <div class="dither" style="width:440px;"></div>
+        <h1>Wavetable spicer</h1>
+        <div class="dither" style="width:440px;"></div>
+        
+        <div class="paragraph">Make your N163 wavetable more interesting.</div>
+        <div>Wavetable: <input type="text" value="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 15 15 15 15 15 15 15 15 15 15 15 15" class="wave"/></div>
+        <div class="paragraph">Output:<br/><textarea class="textarea" readonly ></textarea></div>
+        <br/>
+        <canvas class="canvas" height="32" width="256"></canvas>
+        
+        <script src="index.js"></script>
+    </body>
+</html>
