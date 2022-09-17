@@ -81,6 +81,10 @@ class oscillator {
 function fm() {
   var wavetable = [];
   for (var i=0;i<ops;i++) {oscillators[i].resetphase();}
+  for (var x=0;x<length*7;x++) {
+    for (var i=0;i<ops;i++) {oscillators[i].clock();}
+    for (var i=0;i<ops;i++) {oscillators[i].clockend();}
+  }
   for (var x=0;x<length;x++) {
     wavetable[x] = 0;
     for (var i=0;i<ops;i++) {wavetable[x]+=oscillators[i].clock()*outs[i];}
