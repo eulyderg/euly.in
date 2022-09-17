@@ -1,0 +1,28 @@
+body {
+  background-color: white;
+  margin-top: 0px;
+}
+.top {
+  background-color: white;
+  position: sticky;
+  top: 0px;
+  border-top: 8px solid white;
+}
+
+canvas {
+  display: block;
+  margin: 1px;
+  box-shadow: -1px 0px 0px rgb(118 118 118), 0px -1px 0px rgb(118 118 118), 1px 0px 0px rgb(118 118 118), 0px 1px 0px rgb(118 118 118);
+}
+
+input[type="range"] {
+  vertical-align: middle;
+  margin: -2px 0px -2px 0px;
+}
+
+.mod {
+  display: inline-block;
+  font-size: 10px;
+  text-align: center;
+  font-weight: bold;
+}
