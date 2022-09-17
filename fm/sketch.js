@@ -12,7 +12,7 @@ var sawtooth = function(x) {return modulo(x,Math.PI*2)/Math.PI-1;}
 var ops = 6;       // number of operators
 var uriParam = window.location.href.split("?")[1];
 if (!isNaN(parseInt(uriParam))) {
-  ops = parseInt(uriParam);
+  ops = Math.min(parseInt(uriParam),16);
 }
 
 let amp = [];      // oscillator amplitude
