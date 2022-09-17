@@ -17,7 +17,7 @@ if (!isNaN(parseInt(uriParam))) {
 
 let amp = [];      // oscillator amplitude
 let phase = [];    // oscillator phase
-let mults = [];     // oscillator multipler
+let mults = [];    // oscillator multipler
 let ampmod = [];   // macro on amplitude?
 let phasemod = []; // macro on phase?
 let waves = [];    // oscillator waveform
@@ -129,7 +129,7 @@ function setup() {
     amp[i] = 1;
     ampmod[i] = false;
     phase[i] = 0;
-    phasemod = false;
+    phasemod[i] = false;
     mults[i] = 1;
     waves[i] = sine;
     outs[i] = (i==0)?1:0;
@@ -155,7 +155,7 @@ function setup() {
     ampCheckboxes[i].elt.type = "checkbox";
     ampCheckboxes[i].elt.title = "Modulate A"+(i+1);
     ampCheckboxes[i].index = i;
-    ampCheckboxes[i].input(function(){ampmod[this.index]=this.value()});
+    ampCheckboxes[i].input(function(){ampmod[this.index]=this.elt.checked});
     ampCheckboxes[i].parent(amplitudeRow);
     ampSpans[i] = createSpan("AMPLITUDE 1.00");
     ampSpans[i].style("font-size","12px");
@@ -174,7 +174,7 @@ function setup() {
     phaseCheckboxes[i].elt.type = "checkbox";
     phaseCheckboxes[i].elt.title = "Modulate P"+(i+1);
     phaseCheckboxes[i].index = i;
-    phaseCheckboxes[i].input(function(){phasemod[this.index]=this.value();});
+    phaseCheckboxes[i].input(function(){phasemod[this.index]=this.elt.checked;});
     phaseCheckboxes[i].parent(phaseRow);
     phaseSpans[i] = createSpan("PHASE 0.00");
     phaseSpans[i].style("font-size","12px");
