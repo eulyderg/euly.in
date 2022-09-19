@@ -6,7 +6,9 @@
 function modulo(a,b) {return ((a % b) + b) % b;}
 // waveform functions //
 var sine = function(x) {return Math.sin(x);}
+var sine_rectified = function(x) {return Math.max(Math.sin(x),0);}
 var sawtooth = function(x) {return modulo(x,Math.PI*2)/Math.PI-1;}
+var waveList = [sine,sine_rectified,sawtooth];
 
 // global parameters //
 var ops = 6;       // number of operators
@@ -66,9 +68,9 @@ class oscillator {
     var finalamp = ampmod[this.id] ? amp[this.id] * macro : amp[this.id];
     this.phase += 1/length;
     for (var i=0;i<oscillators.length;i++) {
-      this.phase += (oscillators[i].curr - oscillators[i].prev)*mod[this.id][i]/(Math.PI*2);
+      this.phase += (oscillators[i].curr - oscillators[i].prev)*mod[this.id][i]*(this.id==i?2:1)/(Math.PI*2);
     }
-    this.out = waves[this.id]((Math.PI*2)*this.phase*mults[this.id])*finalamp;
+    this.out = waveList[waves[this.id]]((Math.PI*2)*this.phase*mults[this.id])*finalamp;
     return this.out;
   }
   clockend() {
@@ -131,7 +133,7 @@ function setup() {
     phase[i] = 0;
     phasemod[i] = false;
     mults[i] = 1;
-    waves[i] = sine;
+    waves[i] = 0;
     outs[i] = (i==0)?1:0;
     mod[i] = [];
     modSliders[i] = [];
@@ -185,7 +187,7 @@ function setup() {
     });
     var multiplierRow = createDiv();
     multiplierRow.style('margin-bottom','-4px');
-    multSliders[i] = createSlider(0, 8, 1, 1);
+    multSliders[i] = createSlider(0, 15, 1, 1);
     multSliders[i].style('width', '256px');
     multSliders[i].index = i;
     multSliders[i].parent(multiplierRow);
@@ -217,7 +219,7 @@ function setup() {
     var modRow = createDiv();
     for (var j=0;j<ops;j++) {
       mod[i][j] = 0;
-      modSliders[i][j] = createSlider(0, (j==i)?2:1, 0, 0.01);
+      modSliders[i][j] = createSlider(0, 1, 0, 0.01);
       modSliders[i][j].style('width', '64px');
       modSliders[i][j].index = [i,j];
       modSliders[i][j].input(function(){mod[this.index[0]][this.index[1]]=this.value();});
@@ -274,6 +276,89 @@ function setup() {
   out.style('vertical-align','middle');
   out.style('font-family','monospace');
   out.elt.onclick = function(){out.elt.select();document.execCommand('copy');}
+  createDiv("<br/><b>NOTE: This tool is incomplete!<br/>Please wait until development is complete before sharing this tool or any patches exported from it!<br/>");
+  
+  // patch export //
+  var buttonExport = createButton("Export Patch");
+  buttonExport.mousePressed(function(){
+    var data = [];
+    data.push("F");
+    data.push("M");
+    data.push(String.fromCharCode(0x01));
+    data.push(String.fromCharCode(ops));
+    data.push(String.fromCharCode(length));
+    for (var i=0;i<ops;i++) {
+      data.push(String.fromCharCode(Math.floor(amp[i]*20)));
+      data.push(String.fromCharCode(ampmod[i]?1:0));
+      data.push(String.fromCharCode(Math.floor(phase[i]*100)));
+      data.push(String.fromCharCode(phasemod[i]?1:0));
+      data.push(String.fromCharCode(mults[i]));
+      data.push(String.fromCharCode(waves[i]));
+      for (var j=0;j<ops;j++) {
+        data.push(String.fromCharCode(Math.floor(mod[i][j]*100)));
+      }
+      data.push(String.fromCharCode(Math.floor(outs[i]*100)));
+    }
+    var file = new Blob(data, { type: "application/octet-stream" });
+    saveAs(URL.createObjectURL(file),"patch.fm.eup");
+    URL.revokeObjectURL(file);
+  });
+  
+  var fileUpload = createFileInput(function(file){
+    var reader = new FileReader();
+    reader.addEventListener("load",_=>{
+      var data = reader.result.split("").map(x=>x.charCodeAt(0));
+      var pointer = 0;
+      if (String.fromCharCode(data[pointer])+String.fromCharCode(data[pointer+1])=="WS") {
+        alert("Invalid format. Expected FM patch, format is WaveSynth.");
+        return;
+      }
+      if (String.fromCharCode(data[pointer])+String.fromCharCode(data[pointer+1])!="FM") {
+        alert("Invalid format. Not FM patch format.");
+        return;
+      }
+      pointer += 2;
+      if (data[pointer]>1) {
+        alert("File version too new! Expected version 1 or lower.");
+        return;
+      }
+      pointer++;
+      ops = data[pointer]; pointer++;
+      length = data[pointer]; pointer++; 
+      for (var i=0;i<ops;i++) {
+        amp[i] = data[pointer]/20; pointer++;
+        ampmod[i] = (data[pointer]==1); pointer++;
+        phase[i] = data[pointer]/100; pointer++;
+        phasemod[i] = (data[pointer]==1); pointer++;
+        mults[i] = data[pointer]; pointer++;
+        waves[i] = data[pointer]; pointer++;
+        for (var j=0;j<ops;j++) {
+          mod[i][j] = data[pointer]/100; pointer++;
+          modSliders[i][j].elt.value = mod[i][j];
+        }
+        outs[i] = data[pointer]/100; pointer++;
+        ampSliders[i].elt.value = amp[i];
+        ampSpans[i].elt.innerHTML = "AMPLITUDE "+amp[i].toFixed(2);
+        ampCheckboxes[i].elt.value = ampmod[i];
+        phaseSliders[i].elt.value = phase[i];
+        phaseSpans[i].elt.innerHTML = "PHASE "+phase[i].toFixed(2);
+        phaseCheckboxes[i].elt.value = phasemod[i];
+        multSliders[i].elt.value = mults[i];
+        multSpans[i].elt.innerHTML = "PHASE "+mults[i].toFixed(2);
+        outSliders[i].elt.value = outs[i];
+      }
+      lenslider.elt.value = length;
+      lenspan.html("<br/>LENGTH: "+length);
+    });
+    reader.readAsBinaryString(file.file);
+  });
+  var fileLabel = createElement("label","Import Patch");
+  fileUpload.elt.id = "import";
+  fileUpload.style("display:none;");
+  fileLabel.elt.setAttribute("for","import");
+  var buttonImport = createButton("");
+  fileUpload.parent(buttonImport);
+  fileLabel.parent(buttonImport);
 }
 
 // every tick, do... //
@@ -286,5 +371,19 @@ function draw() {
     rect(i*4,(15-wavetable[i])*4,5,1);
     rect(i*4+4,(15-wavetable[i])*4,1,(wavetable[i]-wavetable[(i+1)%length])*4);
     out.elt.value += wavetable[i]+" ";
+  }
+}
+
+// file saving
+function saveAs(uri, filename) {
+  var link = document.createElement('a');
+  if (typeof link.download === 'string') {
+    link.href = uri;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  } else {
+    window.open(uri);
   }
 }
