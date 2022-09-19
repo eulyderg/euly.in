@@ -44,6 +44,7 @@ var outSliders = [];
 var textarea, out;
 var modslider, lenslider;
 var lenspan;
+var canvasEl;
 
 // oscillator class //
 var oscillators = [];
@@ -104,8 +105,8 @@ function fm() {
 function setup() {
   var topBar = createDiv();
   topBar.class("top");
-  var canvas = createCanvas(length*4, 61);
-  canvas.parent(topBar);
+  if (!canvasEl) {canvasEl = createCanvas(length*4, 61);}
+  canvasEl.parent(topBar);
   noStroke();
   
   // add length slider //
@@ -324,7 +325,8 @@ function setup() {
       }
       pointer++;
       ops = data[pointer]; pointer++;
-      length = data[pointer]; pointer++; 
+      reInit();
+      length = data[pointer]; pointer++;
       for (var i=0;i<ops;i++) {
         amp[i] = data[pointer]/20; pointer++;
         ampmod[i] = (data[pointer]==1); pointer++;
@@ -374,7 +376,7 @@ function draw() {
   }
 }
 
-// file saving
+// file saving //
 function saveAs(uri, filename) {
   var link = document.createElement('a');
   if (typeof link.download === 'string') {
@@ -386,4 +388,36 @@ function saveAs(uri, filename) {
   } else {
     window.open(uri);
   }
+}
+
+// reset everything //
+function reInit() {
+  oscillators = [];
+  amp = [];
+  phase = [];
+  mults = [];
+  ampmod = [];
+  phasemod = [];
+  waves = [];
+  mod = [];
+  outs = [];
+  macro = 1;
+  ampSliders = [];
+  ampSpans = [];
+  ampCheckboxes = [];
+  phaseSliders = [];
+  phaseSpans = [];
+  phaseCheckboxes = [];
+  multSliders = [];
+  multSpans = [];
+  multCheckboxes = [];
+  modSliders = [];
+  outSliders = [];
+  textarea = null;
+  out = null;
+  modslider = null;
+  lenslider = null;
+  lenspan = null;
+  removeElements();
+  setup();
 }
