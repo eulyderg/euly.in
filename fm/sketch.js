@@ -8,7 +8,9 @@ function modulo(a,b) {return ((a % b) + b) % b;}
 var sine = function(x) {return Math.sin(x);}
 var sine_rectified = function(x) {return Math.max(Math.sin(x),0);}
 var sawtooth = function(x) {return modulo(x,Math.PI*2)/Math.PI-1;}
-var waveList = [sine,sine_rectified,sawtooth];
+var square_wave = function(x) {return (modulo(x,Math.PI*2)>=Math.PI)?1:-1;}
+var waveList = [sine,sine_rectified,sawtooth,square_wave];
+var waveNames = ["Sine","Rectified Sine","Sawtooth","Square"];
 
 // global parameters //
 var ops = 6;       // number of operators
@@ -30,6 +32,8 @@ let macro = 1;     // global macro (wave index)
 var length = 64;   // wavetable length
 
 // elements //
+var waveCanvases = [];
+var waveDropdowns = [];
 var ampSliders = [];
 var ampSpans = [];
 var ampCheckboxes = [];
@@ -84,10 +88,6 @@ class oscillator {
 function fm() {
   var wavetable = [];
   for (var i=0;i<ops;i++) {oscillators[i].resetphase();}
-  for (var x=0;x<length*7;x++) {
-    for (var i=0;i<ops;i++) {oscillators[i].clock();}
-    for (var i=0;i<ops;i++) {oscillators[i].clockend();}
-  }
   for (var x=0;x<length;x++) {
     wavetable[x] = 0;
     for (var i=0;i<ops;i++) {wavetable[x]+=oscillators[i].clock()*outs[i];}
@@ -142,17 +142,36 @@ function setup() {
     // create elements //
     var operatorDiv = createDiv();
     operatorDiv.class("operator");
-    var titleRow = createDiv("OPERATOR "+(i+1));
+    var titleRow = createDiv("OPERATOR "+(i+1)+" ");
     titleRow.style("font-family","serif");
     titleRow.style("font-size","12px");
     titleRow.style("color","#555555");
     titleRow.style("margin-top","8px");
     titleRow.style("margin-bottom","-6px");
+    waveCanvases[i] = createElement("canvas");
+    waveCanvases[i].elt.width = 32;
+    waveCanvases[i].elt.height = 16;
+    waveCanvases[i].elt.style.display = "inline-block";
+    waveCanvases[i].elt.style.margin = "0px 0px 0px 4px";
+    waveCanvases[i].parent(titleRow);
+    waveDropdowns[i] = createSelect();
+    waveDropdowns[i].style("height","18px");
+    waveDropdowns[i].elt.style.position = "relative";
+    waveDropdowns[i].elt.style.top = "-2px";
+    waveDropdowns[i].index = i;
+    waveDropdowns[i].parent(titleRow);
+    for (var j=0;j<waveList.length;j++) {
+      waveDropdowns[i].option(waveNames[j],j);
+    }
+    waveDropdowns[i].input(function(){
+      waves[this.index] = this.value();
+      redrawWaves();
+    })
     var amplitudeRow = createDiv();
     amplitudeRow.style('margin-bottom','-4px');
     ampSliders[i] = createSlider(0, 8, 1, 0.05);
     ampSliders[i].style('width', '256px');
-    ampSliders[i].id = i;
+    ampSliders[i].index = i;
     ampSliders[i].parent(amplitudeRow);
     ampCheckboxes[i] = createElement("input");
     ampCheckboxes[i].elt.type = "checkbox";
@@ -164,8 +183,8 @@ function setup() {
     ampSpans[i].style("font-size","12px");
     ampSpans[i].parent(amplitudeRow);
     ampSliders[i].input(function(){
-      amp[this.id] = this.value();
-      ampSpans[this.id].html("AMPLITUDE "+this.value().toFixed(2));
+      amp[this.index] = this.value();
+      ampSpans[this.index].html("AMPLITUDE "+this.value().toFixed(2));
     });
     var phaseRow = createDiv();
     phaseRow.style('margin-bottom','-4px');
@@ -241,6 +260,9 @@ function setup() {
     operatorDiv.parent(operatorGrid);
   }
   
+  // draw wave boxes //
+  redrawWaves();
+  
   // add macro slider//
   createSpan("<br/>Macro: ");
   modslider = createSlider(0, 1, macro, 0.01);
@@ -277,31 +299,32 @@ function setup() {
   out.style('vertical-align','middle');
   out.style('font-family','monospace');
   out.elt.onclick = function(){out.elt.select();document.execCommand('copy');}
-  createDiv("<br/><b>NOTE: This tool is incomplete!<br/>Please wait until development is complete before sharing this tool or any patches exported from it!<br/>");
+  createDiv("<br/><b>NOTE: This tool is incomplete! Export compatability not guaranteed! Use with caution!<br/>");
   
   // patch export //
   var buttonExport = createButton("Export Patch");
   buttonExport.mousePressed(function(){
     var data = [];
-    data.push("F");
-    data.push("M");
-    data.push(String.fromCharCode(0x01));
-    data.push(String.fromCharCode(ops));
-    data.push(String.fromCharCode(length));
+    data.push("F".charCodeAt(0));
+    data.push("M".charCodeAt(0));
+    data.push(0x01);
+    data.push(ops);
+    data.push(length);
     for (var i=0;i<ops;i++) {
-      data.push(String.fromCharCode(Math.floor(amp[i]*20)));
-      data.push(String.fromCharCode(ampmod[i]?1:0));
-      data.push(String.fromCharCode(Math.floor(phase[i]*100)));
-      data.push(String.fromCharCode(phasemod[i]?1:0));
-      data.push(String.fromCharCode(mults[i]));
-      data.push(String.fromCharCode(waves[i]));
+      data.push(Math.floor(amp[i]*20));
+      data.push(ampmod[i]?1:0);
+      data.push(Math.floor(phase[i]*100));
+      data.push(phasemod[i]?1:0);
+      data.push(mults[i]);
+      data.push(0); // multmod
+      data.push(waves[i]);
       for (var j=0;j<ops;j++) {
-        data.push(String.fromCharCode(Math.floor(mod[i][j]*100)));
+        data.push(Math.floor(mod[i][j]*100));
       }
-      data.push(String.fromCharCode(Math.floor(outs[i]*100)));
+      data.push(Math.floor(outs[i]*100));
     }
-    var file = new Blob(data, { type: "application/octet-stream" });
-    saveAs(URL.createObjectURL(file),"patch.fm.eup");
+    var file = new Blob([new Uint8Array(data)], { type: "application/octet-stream" });
+    saveAs(URL.createObjectURL(file),"patch.eup");
     URL.revokeObjectURL(file);
   });
   
@@ -333,12 +356,14 @@ function setup() {
         phase[i] = data[pointer]/100; pointer++;
         phasemod[i] = (data[pointer]==1); pointer++;
         mults[i] = data[pointer]; pointer++;
+        pointer++;
         waves[i] = data[pointer]; pointer++;
         for (var j=0;j<ops;j++) {
           mod[i][j] = data[pointer]/100; pointer++;
           modSliders[i][j].elt.value = mod[i][j];
         }
         outs[i] = data[pointer]/100; pointer++;
+        waveDropdowns[i].elt.value = waves[i];
         ampSliders[i].elt.value = amp[i];
         ampSpans[i].elt.innerHTML = "AMPLITUDE "+amp[i].toFixed(2);
         ampCheckboxes[i].elt.value = ampmod[i];
@@ -346,9 +371,11 @@ function setup() {
         phaseSpans[i].elt.innerHTML = "PHASE "+phase[i].toFixed(2);
         phaseCheckboxes[i].elt.value = phasemod[i];
         multSliders[i].elt.value = mults[i];
-        multSpans[i].elt.innerHTML = "PHASE "+mults[i].toFixed(2);
+        multSpans[i].elt.innerHTML = "MULT "+mults[i].toFixed(2);
         outSliders[i].elt.value = outs[i];
       }
+      redrawWaves();
+      resizeCanvas(length*4,61);
       lenslider.elt.value = length;
       lenspan.html("<br/>LENGTH: "+length);
     });
@@ -402,6 +429,8 @@ function reInit() {
   mod = [];
   outs = [];
   macro = 1;
+  waveCanvases = [];
+  waveDropdowns = [];
   ampSliders = [];
   ampSpans = [];
   ampCheckboxes = [];
@@ -420,4 +449,23 @@ function reInit() {
   lenspan = null;
   removeElements();
   setup();
+}
+
+// redraw waveforms //
+function redrawWaves() {
+  for (var i=0;i<waveCanvases.length;i++) {
+    var ctx = waveCanvases[i].elt.getContext("2d");
+    ctx.clearRect(0,0,32,16);
+    for (var x=0;x<32;x++) {
+      ctx.fill = "black";
+      var sampleValue = Math.min(Math.max(Math.floor(waveList[waves[i]](x*Math.PI/16)*7.5+8),0),15);
+      var sampleValueNext = Math.min(Math.max(Math.floor(waveList[waves[i]]((x+1)%32*Math.PI/16)*7.5+8),0),15);
+      ctx.fillRect(x,15-sampleValue,1,1);
+      if (sampleValueNext-sampleValue > 1) {
+        ctx.fillRect(x,15-sampleValue,1,sampleValue-sampleValueNext);
+      } else if (sampleValueNext-sampleValue < 0) {
+        ctx.fillRect(x,15-sampleValue,1,sampleValue-sampleValueNext);
+      }
+    }
+  }
 }
