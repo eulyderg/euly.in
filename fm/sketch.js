@@ -7,10 +7,11 @@ function modulo(a,b) {return ((a % b) + b) % b;}
 // waveform functions //
 var sine = function(x) {return Math.sin(x);}
 var sine_rectified = function(x) {return Math.max(Math.sin(x),0);}
+var triangle_wave = function(x) {return 1-2*Math.abs(modulo(x,Math.PI*2)/Math.PI-1);}
 var sawtooth = function(x) {return modulo(x,Math.PI*2)/Math.PI-1;}
 var square_wave = function(x) {return (modulo(x,Math.PI*2)>=Math.PI)?1:-1;}
-var waveList = [sine,sine_rectified,sawtooth,square_wave];
-var waveNames = ["Sine","Rectified Sine","Sawtooth","Square"];
+var waveList = [sine,sine_rectified,triangle_wave,sawtooth,square_wave];
+var waveNames = ["Sine","Rectified Sine","Triangle","Sawtooth","Square"];
 
 // global parameters //
 var ops = 6;       // number of operators
@@ -88,6 +89,10 @@ class oscillator {
 function fm() {
   var wavetable = [];
   for (var i=0;i<ops;i++) {oscillators[i].resetphase();}
+  for (var x=0;x<length;x++) {
+    for (var i=0;i<ops;i++) {oscillators[i].clock();}
+    for (var i=0;i<ops;i++) {oscillators[i].clockend();}
+  }
   for (var x=0;x<length;x++) {
     wavetable[x] = 0;
     for (var i=0;i<ops;i++) {wavetable[x]+=oscillators[i].clock()*outs[i];}
@@ -299,7 +304,33 @@ function setup() {
   out.style('vertical-align','middle');
   out.style('font-family','monospace');
   out.elt.onclick = function(){out.elt.select();document.execCommand('copy');}
-  createDiv("<br/><b>NOTE: This tool is incomplete! Export compatability not guaranteed! Use with caution!<br/>");
+  
+  
+  createSpan("<br/><br/><b>File Exports: </b>");
+  // patch export //
+  var buttonDMWExport = createButton("Export DMW");
+  buttonDMWExport.mousePressed(function(){
+    var wavetable = fm();
+    var data = [];
+    data.push(0x00);
+    data.push(0x00);
+    data.push(0x00);
+    data.push(length);
+    data.push(0xFF);
+    data.push(0x01);
+    data.push(0x0F);
+    for (var i=0;i<length;i++) {
+      data.push(0x00);
+      data.push(0x00);
+      data.push(0x00);
+      data.push(Math.floor(wavetable[i]));
+    }
+    var file = new Blob([new Uint8Array(data)], { type: "application/octet-stream" });
+    saveAs(URL.createObjectURL(file),"patch.dmw");
+    URL.revokeObjectURL(file);
+  });
+  
+  createDiv("<b>NOTE: This tool is incomplete! Patch export compatability not guaranteed! Use with caution!<br/>");
   
   // patch export //
   var buttonExport = createButton("Export Patch");
