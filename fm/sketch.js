@@ -312,18 +312,18 @@ function setup() {
   buttonDMWExport.mousePressed(function(){
     var wavetable = fm();
     var data = [];
-    data.push(0x00);
-    data.push(0x00);
-    data.push(0x00);
     data.push(length);
+    data.push(0x00);
+    data.push(0x00);
+    data.push(0x00);
     data.push(0xFF);
     data.push(0x01);
     data.push(0x0F);
     for (var i=0;i<length;i++) {
-      data.push(0x00);
-      data.push(0x00);
-      data.push(0x00);
       data.push(Math.floor(wavetable[i]));
+      data.push(0x00);
+      data.push(0x00);
+      data.push(0x00);
     }
     var file = new Blob([new Uint8Array(data)], { type: "application/octet-stream" });
     saveAs(URL.createObjectURL(file),"patch.dmw");
