@@ -1,3 +1,8 @@
+// FM synth by Eulous //
+// You DO NOT have my permission to download, modify, or distribute this file!
+
+
+
 ///////////////////////////
 // variable declarations //
 ///////////////////////////
