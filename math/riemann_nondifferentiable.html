@@ -44,7 +44,8 @@
             }
             
             var phi = 0;
-            var update = function() {
+            var lastTime = 0;
+            var update = function(currentTime) {
                 ctx.fillStyle = "#FFFFFF";
                 ctx.fillRect(0,0,width,height);
                 ctx.fillStyle = "#000000";
@@ -102,7 +103,9 @@
                     }
                 }
                 
-                phi += 0.5*PI/60;
+                var deltaTime = currentTime-lastTime;
+                phi += 0.5*PI*deltaTime/1000;
+                lastTime = currentTime;
                 window.requestAnimationFrame(update);
             }
             window.requestAnimationFrame(update);
