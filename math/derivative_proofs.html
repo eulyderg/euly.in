@@ -19,7 +19,7 @@
             <div style="display:inline-block;">
                 $$\begin{split}
                 \textrm{let }f(x) &= c
-                \\\frac{\delta}{\delta x}f(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
+                \\\frac{d}{dx}f(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{c-c}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{0}{\Delta x}
                 \\&= 0
@@ -30,7 +30,7 @@
             <h3 style="margin:0;">Constant multiple rule</h3>
             <div style="display:inline-block;">
                 $$\begin{split}
-                \frac{\delta}{\delta x}cf(x) &= \lim_{\Delta x\to0}\frac{cf(x+\Delta x)-cf(x)}{\Delta x}
+                \frac{d}{dx}cf(x) &= \lim_{\Delta x\to0}\frac{cf(x+\Delta x)-cf(x)}{\Delta x}
                 \\&= c\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
                 \\&= cf'(x)
                 \end{split}$$
@@ -40,7 +40,7 @@
             <h3 style="margin:0;">Sum rule</h3>
             <div style="display:inline-block;">
                 $$\begin{split}
-                \frac{\delta}{\delta x}(f(x)+g(x)) &= \lim_{\Delta x\to0}\frac{(f(x+\Delta x)+g(x+\Delta x))-(f(x)+g(x))}{\Delta x}
+                \frac{d}{dx}(f(x)+g(x)) &= \lim_{\Delta x\to0}\frac{(f(x+\Delta x)+g(x+\Delta x))-(f(x)+g(x))}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)+g(x+\Delta x)-f(x)-g(x)}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)+g(x+\Delta x)-g(x)}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}+\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
@@ -53,7 +53,7 @@
             <h3 style="margin:0;">Product rule</h3>
             <div style="display:inline-block;">
                 $$\begin{split}
-                \frac{\delta}{\delta x}f(x)g(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x)g(x)}{\Delta x}
+                \frac{d}{dx}f(x)g(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x)g(x)}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)+f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)}{\Delta x}+\frac{f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}\right)
                 \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)}{\Delta x}+\lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}
@@ -67,7 +67,7 @@
             <h3 style="margin:0;">Quotient rule</h3>
             <div style="display:inline-block;">
                 $$\begin{split}
-                \frac{\delta}{\delta x}\frac{f(x)}{g(x)} &= \lim_{\Delta x\to0}\frac{\frac{f(x+\Delta x)}{g(x+\Delta x)}-\frac{f(x)}{g(x)}}{\Delta x}
+                \frac{d}{dx}\frac{f(x)}{g(x)} &= \lim_{\Delta x\to0}\frac{\frac{f(x+\Delta x)}{g(x+\Delta x)}-\frac{f(x)}{g(x)}}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)}{g(x+\Delta x)}-\frac{f(x)}{g(x)}\right)
                 \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)}{g(x+\Delta x)g(x)}-\frac{f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
                 \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)-f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
@@ -84,7 +84,7 @@
             <h3 style="margin:0;">Power rule</h3>
             <div style="display:inline-block;">
                 $$\begin{split}
-                \frac{\delta}{\delta x}x^n &= \lim_{\Delta x\to0}\frac{\left(x+\Delta x\right)^n-x^n}{\Delta x}
+                \frac{d}{dx}x^n &= \lim_{\Delta x\to0}\frac{\left(x+\Delta x\right)^n-x^n}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{\sum^{n}_{i=0}\binom{n}{i}x^i\Delta x^{n-i}-x^n}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{x^n+\Delta x\binom{n}{n-1}x^{n-1}+\Delta x^2\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}-x^n}{\Delta x}
                 \\&= \lim_{\Delta x\to0}\frac{\Delta x\binom{n}{n-1}x^{n-1}+\Delta x^2\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}}{\Delta x}
@@ -102,7 +102,7 @@
             <h3 style="margin:0;">Chain rule</h3>
             <div style="display:inline-block;">
                 $$\begin{split}
-                \frac{\delta}{\delta x}f(g(x))) &= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\right)
+                \frac{d}{dx}f(g(x))) &= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\right)
                 \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\cdot\frac{g(x+\Delta x)-g(x)}{g(x+\Delta x)-g(x)}\right)
                 \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\cdot\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
                 \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\right)\cdot\lim_{\Delta x\to0}\left(\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
