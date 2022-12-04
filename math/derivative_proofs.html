@@ -6,103 +6,122 @@
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js" integrity="sha384-97gW6UIJxnlKemYavrqDHSX3SiygeOwIZhwyOKRfSaf0JWKRVj9hLASHgFTzT+0O" crossorigin="anonymous"></script>
         <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
         <meta charset="utf-8"/>
+        <style>
+            @media print {
+                div.group {break-inside: avoid;}
+            }
+        </style>
     </head>
     <body>
         <h2 style="margin-top:0;"><u>Proofs of various derivative rules</u></h2>
-        <h3 style="margin:0;">Derivative of a constant</h3>
-        <div style="display:inline-block;">
-            $$\begin{split}
-            \textrm{let }f(x) &= c
-            \\\frac{\delta}{\delta x}f(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{c-c}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{0}{\Delta x}
-            \\&= 0
-            \end{split}$$
-        </div>
-        <h3 style="margin:0;">Constant multiple rule</h3>
-        <div style="display:inline-block;">
-            $$\begin{split}
-            \frac{\delta}{\delta x}cf(x) &= \lim_{\Delta x\to0}\frac{cf(x+\Delta x)-cf(x)}{\Delta x}
-            \\&= c\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
-            \\&= cf'(x)
-            \end{split}$$
-        </div>
-        <h3 style="margin:0;">Sum rule</h3>
-        <div style="display:inline-block;">
-            $$\begin{split}
-            \frac{\delta}{\delta x}(f(x)+g(x)) &= \lim_{\Delta x\to0}\frac{(f(x+\Delta x)+g(x+\Delta x))-(f(x)+g(x))}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)+g(x+\Delta x)-f(x)-g(x)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)+g(x+\Delta x)-g(x)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}+\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
-            \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}+\lim_{\Delta x\to0}\frac{g(x+\Delta x)-g(x)}{\Delta x}
-            \\&=f'(x)+g'(x)
-            \end{split}$$
-        </div>
-        <h3 style="margin:0;">Product rule</h3>
-        <div style="display:inline-block;">
-            $$\begin{split}
-            \frac{\delta}{\delta x}f(x)g(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x)g(x)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)+f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)}{\Delta x}+\frac{f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}\right)
-            \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)}{\Delta x}+\lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}f(x+\Delta x)\frac{g(x+\Delta x)-g(x)}{\Delta x}+\lim_{\Delta x\to0}g(x)\frac{f(x+\Delta x)-f(x)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\left(f(x+\Delta x)\right)\lim_{\Delta x\to0}\left(\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)+\lim_{\Delta x\to0}\left(g(x)\right)\lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)
-            \\&= f(x)g'(x)+g(x)f'(x)
-            \end{split}$$
-        </div>
-        <h3 style="margin:0;">Quotient rule</h3>
-        <div style="display:inline-block;">
-            $$\begin{split}
-            \frac{\delta}{\delta x}\frac{f(x)}{g(x)} &= \lim_{\Delta x\to0}\frac{\frac{f(x+\Delta x)}{g(x+\Delta x)}-\frac{f(x)}{g(x)}}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)}{g(x+\Delta x)}-\frac{f(x)}{g(x)}\right)
-            \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)}{g(x+\Delta x)g(x)}-\frac{f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
-            \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)-f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
-            \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)-f(x)g(x)+f(x)g(x)-f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
-            \\&= \lim_{\Delta x\to0}\frac{1}{g(x+\Delta x)g(x)}\left(\frac{f(x+\Delta x)g(x)-f(x)g(x)+f(x)g(x)-f(x)g(x+\Delta x)}{\Delta x}\right)
-            \\&= \lim_{\Delta x\to0}\frac{1}{g(x+\Delta x)g(x)}\left(g(x)\frac{f(x+\Delta x)-f(x)}{\Delta x}-f(x)\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
-            \\&= \lim_{\Delta x\to0}\frac{1}{g(x+\Delta x)g(x)}\left(\lim_{\Delta x\to0}g(x)\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}-\lim_{\Delta x\to0}f(x)\lim_{\Delta x\to0}\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
-            \\&= \frac{1}{g(x)g(x)}\left(g(x)f'(x)-f(x)g'(x)\right)
-            \\&= \frac{g(x)f'(x)-f(x)g'(x)}{\left(g(x)\right)^2}
-            \end{split}$$
-        </div>
-        <h3 style="margin:0;">Power rule</h3>
-        <div style="display:inline-block;">
-            $$\begin{split}
-            \frac{\delta}{\delta x}x^n &= \lim_{\Delta x\to0}\frac{\left(x+\Delta x\right)^n-x^n}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{\sum^{n}_{i=0}\binom{n}{i}x^i\Delta x^{n-i}-x^n}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{x^n+\Delta x\binom{n}{n-1}x^{n-1}+\Delta x^2\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}-x^n}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{\Delta x\binom{n}{n-1}x^{n-1}+\Delta x^2\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\frac{\Delta x\left(\binom{n}{n-1}x^{n-1}+\Delta x\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}\right)}{\Delta x}
-            \\&= \lim_{\Delta x\to0}\binom{n}{n-1}x^{n-1}+\Delta x\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}
-            \\&= \binom{n}{n-1}x^{n-1}
-            \\&= \frac{n!}{\left(n-1\right)!\left(n-\left(n-1\right)\right)!}x^{n-1}
-            \\&= \frac{n!}{\left(n-1\right)!1!}x^{n-1}
-            \\&= \frac{n!}{\left(n-1\right)!}x^{n-1}
-            \\&= nx^{n-1}
-            \end{split}$$
-        </div>
-        <h3 style="margin:0;">Chain rule</h3>
-        <div style="display:inline-block;">
-            $$\begin{split}
-            \frac{\delta}{\delta x}f(g(x))) &= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\right)
-            \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\cdot\frac{g(x+\Delta x)-g(x)}{g(x+\Delta x)-g(x)}\right)
-            \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\cdot\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
-            \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\right)\cdot\lim_{\Delta x\to0}\left(\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
-            \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\right)\cdot g'(x)
-            \\&= \lim_{k\to0}\left(\frac{f(u+k)-f(u)}{k}\right)g'(x)
-            \\&= f'(u)g'(x)
-            \\&= f'(g(x))g'(x)
-            \end{split}$$
-        </div>
-        <div style="display:block;position:relative;margin-bottom:4em;">
-            <div style="display:inline-block;float:right;position:absolute;top:-10em;left:30em;border:1px solid black;padding-left:1em;padding-right:1em;">
+        <div class="group">
+            <h3 style="margin:0;">Derivative of a constant</h3>
+            <div style="display:inline-block;">
                 $$\begin{split}
-                &\textrm{let }k=g(x+\Delta x)-g(x).
-                \\&\textrm{let }u=g(x).
-                \\\\&\textrm{Properties:}
-                \\&\hspace{1.5em}g(x+\Delta x)=u+k.
-                \\&\hspace{1.5em}k\to0\textrm{ as } \Delta x\to0.
+                \textrm{let }f(x) &= c
+                \\\frac{\delta}{\delta x}f(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{c-c}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{0}{\Delta x}
+                \\&= 0
                 \end{split}$$
+            </div>
+        </div>
+        <div class="group">
+            <h3 style="margin:0;">Constant multiple rule</h3>
+            <div style="display:inline-block;">
+                $$\begin{split}
+                \frac{\delta}{\delta x}cf(x) &= \lim_{\Delta x\to0}\frac{cf(x+\Delta x)-cf(x)}{\Delta x}
+                \\&= c\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}
+                \\&= cf'(x)
+                \end{split}$$
+            </div>
+        </div>
+        <div class="group">
+            <h3 style="margin:0;">Sum rule</h3>
+            <div style="display:inline-block;">
+                $$\begin{split}
+                \frac{\delta}{\delta x}(f(x)+g(x)) &= \lim_{\Delta x\to0}\frac{(f(x+\Delta x)+g(x+\Delta x))-(f(x)+g(x))}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)+g(x+\Delta x)-f(x)-g(x)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)+g(x+\Delta x)-g(x)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}+\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
+                \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}+\lim_{\Delta x\to0}\frac{g(x+\Delta x)-g(x)}{\Delta x}
+                \\&=f'(x)+g'(x)
+                \end{split}$$
+            </div>
+        </div>
+        <div class="group">
+            <h3 style="margin:0;">Product rule</h3>
+            <div style="display:inline-block;">
+                $$\begin{split}
+                \frac{\delta}{\delta x}f(x)g(x) &= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x)g(x)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)+f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)}{\Delta x}+\frac{f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}\right)
+                \\&= \lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x+\Delta x)-f(x+\Delta x)g(x)}{\Delta x}+\lim_{\Delta x\to0}\frac{f(x+\Delta x)g(x)-f(x)g(x)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}f(x+\Delta x)\frac{g(x+\Delta x)-g(x)}{\Delta x}+\lim_{\Delta x\to0}g(x)\frac{f(x+\Delta x)-f(x)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\left(f(x+\Delta x)\right)\lim_{\Delta x\to0}\left(\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)+\lim_{\Delta x\to0}\left(g(x)\right)\lim_{\Delta x\to0}\left(\frac{f(x+\Delta x)-f(x)}{\Delta x}\right)
+                \\&= f(x)g'(x)+g(x)f'(x)
+                \end{split}$$
+            </div>
+        </div>
+        <div class="group">
+            <h3 style="margin:0;">Quotient rule</h3>
+            <div style="display:inline-block;">
+                $$\begin{split}
+                \frac{\delta}{\delta x}\frac{f(x)}{g(x)} &= \lim_{\Delta x\to0}\frac{\frac{f(x+\Delta x)}{g(x+\Delta x)}-\frac{f(x)}{g(x)}}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)}{g(x+\Delta x)}-\frac{f(x)}{g(x)}\right)
+                \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)}{g(x+\Delta x)g(x)}-\frac{f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
+                \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)-f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
+                \\&= \lim_{\Delta x\to0}\frac{1}{\Delta x}\left(\frac{f(x+\Delta x)g(x)-f(x)g(x)+f(x)g(x)-f(x)g(x+\Delta x)}{g(x+\Delta x)g(x)}\right)
+                \\&= \lim_{\Delta x\to0}\frac{1}{g(x+\Delta x)g(x)}\left(\frac{f(x+\Delta x)g(x)-f(x)g(x)+f(x)g(x)-f(x)g(x+\Delta x)}{\Delta x}\right)
+                \\&= \lim_{\Delta x\to0}\frac{1}{g(x+\Delta x)g(x)}\left(g(x)\frac{f(x+\Delta x)-f(x)}{\Delta x}-f(x)\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
+                \\&= \lim_{\Delta x\to0}\frac{1}{g(x+\Delta x)g(x)}\left(\lim_{\Delta x\to0}g(x)\lim_{\Delta x\to0}\frac{f(x+\Delta x)-f(x)}{\Delta x}-\lim_{\Delta x\to0}f(x)\lim_{\Delta x\to0}\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
+                \\&= \frac{1}{g(x)g(x)}\left(g(x)f'(x)-f(x)g'(x)\right)
+                \\&= \frac{g(x)f'(x)-f(x)g'(x)}{\left(g(x)\right)^2}
+                \end{split}$$
+            </div>
+        </div>
+        <div class="group">
+            <h3 style="margin:0;">Power rule</h3>
+            <div style="display:inline-block;">
+                $$\begin{split}
+                \frac{\delta}{\delta x}x^n &= \lim_{\Delta x\to0}\frac{\left(x+\Delta x\right)^n-x^n}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{\sum^{n}_{i=0}\binom{n}{i}x^i\Delta x^{n-i}-x^n}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{x^n+\Delta x\binom{n}{n-1}x^{n-1}+\Delta x^2\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}-x^n}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{\Delta x\binom{n}{n-1}x^{n-1}+\Delta x^2\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\frac{\Delta x\left(\binom{n}{n-1}x^{n-1}+\Delta x\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}\right)}{\Delta x}
+                \\&= \lim_{\Delta x\to0}\binom{n}{n-1}x^{n-1}+\Delta x\sum^{n-2}_{i=0}\binom{n}{i}x^i\Delta x^{n-2-i}
+                \\&= \binom{n}{n-1}x^{n-1}
+                \\&= \frac{n!}{\left(n-1\right)!\left(n-\left(n-1\right)\right)!}x^{n-1}
+                \\&= \frac{n!}{\left(n-1\right)!1!}x^{n-1}
+                \\&= \frac{n!}{\left(n-1\right)!}x^{n-1}
+                \\&= nx^{n-1}
+                \end{split}$$
+            </div>
+        </div>
+        <div class="group">
+            <h3 style="margin:0;">Chain rule</h3>
+            <div style="display:inline-block;">
+                $$\begin{split}
+                \frac{\delta}{\delta x}f(g(x))) &= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\right)
+                \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{\Delta x}\cdot\frac{g(x+\Delta x)-g(x)}{g(x+\Delta x)-g(x)}\right)
+                \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\cdot\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
+                \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\right)\cdot\lim_{\Delta x\to0}\left(\frac{g(x+\Delta x)-g(x)}{\Delta x}\right)
+                \\&= \lim_{\Delta x\to0}\left(\frac{f(g(x+\Delta x))-f(g(x))}{g(x+\Delta x)-g(x)}\right)\cdot g'(x)
+                \\&= \lim_{k\to0}\left(\frac{f(u+k)-f(u)}{k}\right)g'(x)
+                \\&= f'(u)g'(x)
+                \\&= f'(g(x))g'(x)
+                \end{split}$$
+            </div>
+            <div style="display:block;position:relative;margin-bottom:4em;">
+                <div style="display:inline-block;float:right;position:absolute;top:-10em;left:30em;border:1px solid black;padding-left:1em;padding-right:1em;">
+                    $$\begin{split}
+                    &\textrm{let }k=g(x+\Delta x)-g(x).
+                    \\&\textrm{let }u=g(x).
+                    \\\\&\textrm{Properties:}
+                    \\&\hspace{1.5em}g(x+\Delta x)=u+k.
+                    \\&\hspace{1.5em}k\to0\textrm{ as } \Delta x\to0.
+                    \end{split}$$
+                </div>
             </div>
         </div>
     </body>
