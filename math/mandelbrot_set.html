@@ -69,7 +69,11 @@
 
             var next = function(z,c) {return z.powN(2).add(c);}
 
-            var iterations = 96;
+            var iterations = 64;
+            var uriParam = window.location.href.split("?")[1];
+            if (!isNaN(parseInt(uriParam))) {
+              iterations = Math.min(parseInt(uriParam),128);
+            }
             var width = 512;
             var looping = true;
             var a=-2;
