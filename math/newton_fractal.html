@@ -75,6 +75,10 @@
             var next = function(x) {return x.sub(F(x).div(dF(x)));}
 
             var iterations = 12;
+            var uriParam = window.location.href.split("?")[1];
+            if (!isNaN(parseInt(uriParam))) {
+                iterations = Math.min(parseInt(uriParam),16);
+            }
             var knownRoots = [];
             knownRoots[0] = C(0,1);
             knownRoots[1] = C(0,-1);
