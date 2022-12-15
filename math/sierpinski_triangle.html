@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sierpinski Triangle</title>
+        <meta charset="utf-8" />
+        <style>
+            body{background:white;}
+        </style>
+    </head>
+    <body>
+        <h3 style="margin:0;">Sierpinski Triangle</h3>
+        <canvas width="512" height="512" id="canvas"></canvas>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var line = function(x1,y1,x2,y2) {
+                x1*=width;
+                x2*=width;
+                y1*=width;
+                y2*=width;
+                var dx = x2-x1;
+                var dy = y2-y1;
+                if (Math.abs(dx/dy)>=1) {
+                    if (x2<x1) {
+                        var temp = x1;
+                        x1 = x2;
+                        x2 = temp;
+                        temp = y1;
+                        y1 = y2;
+                        y2 = temp;
+                    }
+                    for (var x=x1;x<x2;x++) {
+                        var y = y1+(x-x1)*dy/dx;
+                        ctx.fillRect(Math.floor(x+0.5),Math.floor(y+0.5),1,1);
+                    }
+                }
+                if (Math.abs(dy/dx)>=1) {
+                    if (y2<y1) {
+                        var temp = y1;
+                        y1 = y2;
+                        y2 = temp;
+                        temp = x1;
+                        x1 = x2;
+                        x2 = temp;
+                    }
+                    for (var y=y1;y<y2;y++) {
+                        var x = x1+(y-y1)*dx/dy;
+                        ctx.fillRect(Math.floor(x+0.5),Math.floor(y+0.5),1,1);
+                    }
+                }
+            }
+
+            var iterations = 6;
+            var uriParam = window.location.href.split("?")[1];
+            if (!isNaN(parseInt(uriParam))) {
+                iterations = Math.min(parseInt(uriParam),8);
+            }
+            if (window.
+            var width = 512;
+            var looping = true;
+            var skipdraw = false;
+            var scope = [];
+            var depth = 0;
+            var draw = function() {
+                for (var it=0;it<16;it++){
+                    if(!looping){break;}
+                    update();
+                }
+                if (looping) {
+                    window.requestAnimationFrame(draw);
+                }
+            }
+            var scopePos = [];
+            var x = 0.5;
+            var y = 0.5;
+            var scale = 0.5;
+            var update = function() {
+                ctx.fillStyle = "#000000";
+                var Tx = x;
+                var Ty = y-scale;
+                var Lx = x-scale*Math.sqrt(3)/2;
+                var Ly = y+scale*0.5;
+                var Rx = x+scale*Math.sqrt(3)/2;
+                var Ry = y+scale*0.5;
+                scopePos[depth] = {Tx:Tx,Ty:Ty,Lx:Lx,Ly:Ly,Rx:Rx,Ry:Ry,x:x,y:y};
+                if (!skipdraw) {
+                    line(Tx,Ty,Rx,Ry);
+                    line(Rx,Ry,Lx,Ly);
+                    line(Lx,Ly,Tx,Ty);
+                }
+                skipdraw = false;
+                if (scope[depth]==2) {
+                      scope[depth]=null;
+                      depth--;
+                      scale*=2;
+                      skipdraw = true;
+                }
+                if (scope[depth]==null) {
+                    scope[depth] = 0;
+                    if (depth<iterations) {
+                        depth++;
+                        scale*=0.5;
+                    }
+                } else if (scope[depth]<2) {
+                    scope[depth]++;
+                    if (depth<iterations) {
+                        depth++;
+                        scale*=0.5;
+                    }
+                }
+                if (scope[depth]==2&&depth==0) {
+                    looping=false;
+                    return;
+                }
+                var p = scopePos[depth-1];
+                if (scope[depth-1]==0) {
+                    x = x;
+                    y = (p.y+p.Ty)/2;
+                } else if (scope[depth-1]==1) {
+                    x = (3*p.Lx+p.Rx)/4;
+                    y = (p.y+p.Ly)/2;
+                } else if (scope[depth-1]==2) {
+                    x = (p.Lx+3*p.Rx)/4;
+                    y = (p.y+p.Ly)/2;
+                }
+            }
+            window.requestAnimationFrame(draw);
+        </script>
+    </body>
+</html>
