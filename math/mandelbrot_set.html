@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Mandelbrot Set</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" integrity="sha384-Juol1FqnotbkyZUT5Z7gUPjQ9gzlwCENvUZTpQBAPxtusdwFLRy382PSDx5UUJ4/" crossorigin="anonymous">
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js" integrity="sha384-97gW6UIJxnlKemYavrqDHSX3SiygeOwIZhwyOKRfSaf0JWKRVj9hLASHgFTzT+0O" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+        <style>
+            body{background:white;}
+        </style>
+    </head>
+    <body>
+        <h3 style="margin:0;">Mandelbrot Set</h3>
+        <div style="display:inline-block;">$$\begin{align*}&z_0=0,\\&z_{n+1}=z_n^2+c\end{align*}$$</div>
+        <div>
+            <canvas width="512" height="512" id="canvas"></canvas>
+        </div>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            class Complex {
+                constructor(a,b) {
+                    this.re = a;
+                    this.im = b;
+                }
+                add(c) {
+                    var z = new Complex(this.re,this.im);
+                    z.re += toC(c).re;
+                    z.im += toC(c).im;
+                    return z;
+                }
+                sub(c) {
+                    var z = new Complex(this.re,this.im);
+                    z.re -= toC(c).re;
+                    z.im -= toC(c).im;
+                    return z;
+                }
+                mul(c) {
+                    var z = new Complex(this.re,this.im);
+                    z.re = this.re*toC(c).re-this.im*toC(c).im;
+                    z.im = this.re*toC(c).im+this.im*toC(c).re;
+                    return z;
+                }
+                div(c) {
+                    var z = new Complex(this.re,this.im);
+                    var recC = new Complex(1,0);
+                    recC.re = toC(c).re/(toC(c).re*toC(c).re+toC(c).im*toC(c).im);
+                    recC.im = -toC(c).im/(toC(c).re*toC(c).re+toC(c).im*toC(c).im);
+                    return z.mul(recC);
+                }
+                powN(n) {
+                    if (n==0) {return 1}
+                    var z = new Complex(this.re,this.im);
+                    for (var i=0;i<n-1;i++) {
+                        z = z.mul(this);
+                    }
+                    return z;
+                }
+                abs() {
+                    return Math.sqrt(this.re*this.re+this.im*this.im);
+                }
+            }
+            var C = function(a,b) {return new Complex(a,b);}
+            function toC(x) {
+                if (typeof(x) === "number") {return new Complex(x,0);}
+                else {return x;}
+            }
+
+            var next = function(z,c) {return z.powN(2).add(c);}
+
+            var iterations = 96;
+            var width = 512;
+            var looping = true;
+            var a=-2;
+            var b=-2;
+            var draw = function() {
+                for (var px=0;px<512;px++) {
+                    if (!looping) {break;}
+                    update();
+                }
+                if (looping) {
+                    window.requestAnimationFrame(draw);
+                }
+            }
+
+            var update = function() {
+                for (var dA=0;dA<2;dA++) {
+                    var z = C(0,0);
+                    var c = C(a+dA*4/width,b);
+                    var i=0;
+                    for (i=0;i<iterations;i++) {
+                        z = next(z,c);
+                        if (z.abs()>2) {
+                            break;
+                        }
+                    }
+                    var col = Math.floor(255*i/iterations).toString(16).padStart(2,"0");
+                    ctx.fillStyle = "#000000"+col;
+                    var x = Math.floor((a+2)*width/4)+dA;
+                    var y = Math.floor((b+2)*width/4);
+                    if (!((x==0&&y==0)||(x==width-1&&y==width-1)||(x==0&&y==width-1)||(x==width-1&&y==0))) {
+                        ctx.fillRect(x,y,1,1);
+                    }
+                }
+                b+=4/width;
+                if (b>=2) {
+                    b=-2;
+                    a+=8/width;
+                    if (a>=2) {
+                        looping = false;
+                    }
+                }
+            }
+            window.requestAnimationFrame(draw);
+        </script>
+    </body>
+</html>
