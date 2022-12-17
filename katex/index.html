@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>KaTeX Output</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" integrity="sha384-Juol1FqnotbkyZUT5Z7gUPjQ9gzlwCENvUZTpQBAPxtusdwFLRy382PSDx5UUJ4/" crossorigin="anonymous">
+      <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.js" integrity="sha384-tsPOhveNsi36uhglzMBNOAA2xd7LlEqQuQHFKi4DwP+6UKrrLGub1MD77Zx18F8e" crossorigin="anonymous"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body, {output:'html',fleqn:true});"></script>
+        <meta charset="utf-8"/>
+        <style>
+            textarea {
+                padding: 4px;
+                width: calc(100% - 16px);
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                box-shadow: 1px 1px 1px #999;
+                min-height: 120px;
+                resize:none;
+                margin-bottom:8px;
+            }
+        </style>
+    </head>
+    <body>
+        <div><textarea id="input"></textarea></div>
+        <div id="math"></div>
+        <script>
+            const tx = document.getElementsByTagName("textarea");
+            for (let i = 0; i < tx.length; i++) {
+                tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+                tx[i].addEventListener("input", OnInput, false);
+            }
+            function OnInput() {
+                this.style.height = 0;
+                this.style.height = (this.scrollHeight) + "px";
+                updateImage();
+            }
+            function updateImage() {
+                var math = document.createElement("div");
+                var input = document.querySelector("#input");
+                var output = document.querySelector("#math");
+                katex.render(input.value, math, {throwOnError: false, displayMode:true});
+                math.style.display = "inline-block";
+                math.style.padding = "16px";
+                while (output.firstChild) {
+                  output.removeChild(output.lastChild);
+                }
+                output.appendChild(math);
+            }
+        </script>
+    </body>
+</html>
