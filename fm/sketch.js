@@ -466,7 +466,6 @@ function setup() {
       s += Math.floor(31.5*wavetable[j]+32)+" ";
     }
     length = 2048;
-    var macro = macroprev;
     var data = s.split("").map(x=>x.charCodeAt(0));
     var file = new Blob([new Uint8Array(data)], { type: "application/octet-stream" });
     saveAs(URL.createObjectURL(file),"wave.fds.txt");
