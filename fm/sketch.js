@@ -28,7 +28,7 @@ var waveList = [sine,sine_rectified,triangle_wave,sawtooth,square_wave];
 var waveNames = ["Sine","Rectified Sine","Triangle","Sawtooth","Square"];
 
 // global parameters //
-var ops = 2;       // number of operators
+var ops = 6;       // number of operators
 var uriParam = window.location.href.split("?")[1];
 if (!isNaN(parseInt(uriParam))) {
   ops = Math.min(parseInt(uriParam),16);
