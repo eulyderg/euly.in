@@ -4,76 +4,72 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
     <style>
-      html, body {margin:0; padding:0; text-align:center;}
-      canvas {display: block;}
-      video {object-fit: fill;}
+      html,body {text-align:center;background:#111111;color:#EEEEEE;}
+      canvas {display:block;}
+      video {object-fit:fill;}
     </style>
     <meta charset="utf-8" />
     <title>Video Capture</title>
-
   </head>
   <body>
-    <main>
-    </main>
+    <main></main>
     <script>
-    let capture; let videodiv,selects; let volume;
-var devices = [];
-navigator.mediaDevices.enumerateDevices()
-  .then((data)=>{devices=data;})
-  .catch((err)=>{console.error(`${err.name}: ${err.message}`);});
-
-var video = -1;
-var videobackup = 0;
-var audio = -1;
-function setup() {
-  noCanvas();
-  createDiv("<br/>");
-  videodiv = createDiv();
-  selects = createDiv();
-  var videodropdown = createSelect();
-  var audiodropdown = createSelect();
-  videodropdown.option("None",-1);
-  audiodropdown.option("None",-1);
-  for (var i=0;i<devices.length;i++) {
-    if (devices[i].kind == "videoinput") {
-      videodropdown.option(devices[i].label,i);
-      videobackup = i;
-    }
-    if (devices[i].kind == "audioinput") {
-      audiodropdown.option(devices[i].label,i);
-    }
-  }
-  volume = createSlider(0,1,0.05,0.01);
-  volume.input(function(){capture.elt.volume=this.value();});
-  videodropdown.parent(selects);
-  audiodropdown.parent(selects);
-  createSpan("<br/>Volume: ").parent(selects);
-  volume.parent(selects);
-  videodropdown.input(function(){video=this.value();selectCapture();});
-  audiodropdown.input(function(){audio=this.value();selectCapture();});
-  selectCapture();
-}
-function selectCapture() {
-  if (capture) {
-    capture.remove();
-  }
-  var videoconstraint = {deviceId: devices[videobackup].deviceId};
-  var audioconstraint = false;
-  if (video!=-1) {videoconstraint = {deviceId: devices[video].deviceId};}
-  if (audio!=-1) {audioconstraint = {deviceId: devices[audio].deviceId};}
-  let constraints = {
-    video: videoconstraint,
-    audio: audioconstraint,
-  }
-  capture = createCapture(constraints);
-  capture.elt.width = 960;
-  capture.elt.height = 540;
-  if (video==-1) {
-    capture.hide();
-  }
-  capture.elt.volume = volume.value();
-  capture.parent(videodiv);
-}
+      let capture; let videodiv,selects; let volume;
+      var devices = [];
+      navigator.mediaDevices.enumerateDevices()
+        .then((data)=>{devices=data;})
+        .catch((err)=>{console.error(`${err.name}: ${err.message}`);});
+      var video = -1;
+      var videobackup = 0;
+      var audio = -1;
+      function setup() {
+        noCanvas();
+        createDiv("<br/>");
+        videodiv = createDiv();
+        selects = createDiv();
+        var videodropdown = createSelect();
+        var audiodropdown = createSelect();
+        videodropdown.option("None",-1);
+        audiodropdown.option("None",-1);
+        for (var i=0;i<devices.length;i++) {
+          if (devices[i].kind == "videoinput") {
+            videodropdown.option(devices[i].label,i);
+            videobackup = i;
+          } elseif (devices[i].kind == "audioinput") {
+            audiodropdown.option(devices[i].label,i);
+          }
+        }
+        volume = createSlider(0,1,0.05,0.01);
+        volume.input(function(){capture.elt.volume=this.value();});
+        videodropdown.parent(selects);
+        audiodropdown.parent(selects);
+        createSpan("<br/>Volume: ").parent(selects);
+        volume.parent(selects);
+        videodropdown.input(function(){video=this.value();selectCapture();});
+        audiodropdown.input(function(){audio=this.value();selectCapture();});
+        selectCapture();
+      }
+      function selectCapture() {
+        if (capture) {
+          capture.remove();
+        }
+        var videoconstraint = {deviceId: devices[videobackup].deviceId};
+        var audioconstraint = false;
+        if (video!=-1) {videoconstraint = {deviceId: devices[video].deviceId};}
+        if (audio!=-1) {audioconstraint = {deviceId: devices[audio].deviceId};}
+        let constraints = {
+          video: videoconstraint,
+          audio: audioconstraint,
+        }
+        capture = createCapture(constraints);
+        capture.elt.width = 960;
+        capture.elt.height = 540;
+        if (video==-1) {
+          capture.hide();
+        }
+        capture.elt.volume = volume.value();
+        capture.parent(videodiv);
+      }
     </script>
   </body>
 </html>
