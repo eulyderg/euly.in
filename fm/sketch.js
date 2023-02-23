@@ -88,11 +88,11 @@ class oscillator {
   // clock one sample //
   clock() {
     var finalamp = Math.max(Math.min(amp[this.id] + ampmod[this.id] * macro, 8),0);
-    this.phase += 1/length;
+    this.phase += mults[this.id]/length;
     for (var i=0;i<oscillators.length;i++) {
       this.phase += (oscillators[i].curr - oscillators[i].prev)*mod[this.id][i]*(this.id==i?2:1)/(Math.PI*2);
     }
-    this.out = waveList[waves[this.id]]((Math.PI*2)*this.phase*mults[this.id])*finalamp;
+    this.out = waveList[waves[this.id]]((Math.PI*2)*this.phase)*finalamp;
     return this.out;
   }
   clockend() {
