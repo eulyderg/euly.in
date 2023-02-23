@@ -290,8 +290,8 @@ function setup() {
   stepSpinbox.elt.setAttribute("type","number");
   stepSpinbox.elt.value = step;
   stepSpinbox.elt.step = 1;
-  stepSpinbox.elt.max = 64;
-  stepSpinbox.elt.min = 2;
+  stepSpinbox.elt.max = 128;
+  stepSpinbox.elt.min = 1;
   stepSpinbox.style("width","48px");
   stepSpinbox.elt.onchange = function(e){step=e.target.value;}
   createSpan(" Keyframes");
