@@ -27,4 +27,4 @@ panel-cell select {
     padding:0px;
 }
 panel-cell.safe { background-color: #A0FFC0; }
-no-js, p { display:block; font-size: 10pt; }
+noscript, p { display:block; font-size: 10pt; }

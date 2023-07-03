@@ -1,6 +1,3 @@
-var noJSElement = document.querySelector("no-js");
-noJSElement.remove();
-
 const World1 = 1;
 const World2 = 2;
 const World3 = 3;
