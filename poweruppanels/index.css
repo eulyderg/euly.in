@@ -1,0 +1,30 @@
+panel-grid {
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto auto;
+    border-radius: 8px;
+    padding: 4px;
+    background-color: #D0D0D0;
+}
+panel-cell {
+    display: inline-block;
+    position: relative;
+    margin: 4px;
+    background-color: white;
+}
+panel-cell, panel-cell img {
+    border-radius: 8px;
+    width: 32px;
+    height: 32px;
+}
+panel-cell label { z-index: 0; }
+panel-cell select {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    z-index: 1;
+    width: 16px;
+    height: 16px;
+    padding:0px;
+}
+panel-cell.safe { background-color: #A0FFC0; }
+no-js, p { display:block; font-size: 10pt; }
