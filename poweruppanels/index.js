@@ -80,7 +80,7 @@ function checkPanels() {
     }
     if (knownMap != Unknown) {
         for (var row=Row1; row<=Row3; row++) {
-            for (var column=Row1; column<=Column6; column++) {
+            for (var column=Column1; column<=Column6; column++) {
                 var powerup = maps[world][knownMap][row][column-1];
                 panels[row][column].update(powerup);
             }
