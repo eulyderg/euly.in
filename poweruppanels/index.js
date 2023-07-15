@@ -132,6 +132,22 @@ function reset() {
     description.innerHTML = "Select your world number above and hit the panels in game that are highlighted above.<br/>Then, select the items that came up in each panel, and the rest of the panels will be filled out automatically.";
     form.appendChild(description);
     
+    var linkDiv = document.createElement("div");
+    linkDiv.classList.add("links");
+    
+    var nsmbwLink = document.createElement("a");
+    var smb3Link = document.createElement("a");
+    
+    nsmbwLink.href = "/poweruppanels/";
+    nsmbwLink.textContent = "NSMBW";
+    smb3Link.href = "/nspade/";
+    smb3Link.textContent = "SMB3";
+    
+    linkDiv.appendChild(nsmbwLink);
+    linkDiv.appendChild(smb3Link);
+    
+    form.appendChild(linkDiv);
+    
     document.body.appendChild(form);
     for (var row=Row1; row<=Row3; row++) {
         panels[row] = [];
