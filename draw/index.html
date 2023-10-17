@@ -215,11 +215,11 @@ function setup() {
 var mouseT = 0;
 var psize = 0;
 var button = 0;
-var mX = -1;
+var mX = -1;    // mouse position
 var mY = -1;
-var pmX = -1;
+var pmX = -1;   // previous mouse position
 var pmy = -1;
-var vX = 0;
+var vX = 0;     // mouse velocity
 var vY = 0;
 var brushSize = 8;
 var col = "#000000";
@@ -230,33 +230,43 @@ var lY = -1;
 var drawingrect = false;
 var rX = -1;
 var rY = -1;
-function draw() {
-  fill(255);
-  if (mouseIsPressed) {
+var linedx = 0;
+var linedy = 0;
+
+var updateBrush = function() {
+    var mouseInvalid = (pmX == -1);
+    if (mouseInvalid) {
+        mX = mouseX;
+        mY = mouseY;
+        pmX = pmouseX;
+        pmY = pmouseY;
+        vX = 0;
+        vY = 0;
+        linedx = 1;
+        linedy = 1;
+    }
     if (drawingline) {
-      if (lX == -1) {
-        lX = mouseX;
-        lY = mouseY;
-      }
-      return;
+        linedx = mouseX-lX;
+        linedy = mouseY-lY;
+        var len = Math.sqrt(linedx*linedx+linedy*linedy);
+        linedx = linedx/len;
+        linedy = linedy/len;
+        linedx = isNaN(linedx) ? 0 : linedx;
+        linedy = isNaN(linedy) ? 0 : linedy;
+        var dx = mouseX-pmouseX;
+        var dy = mouseY-pmouseY;
+        var delta = Math.sqrt(dx*dx+dy*dy);
+        lineang = Math.atan2(linedy,linedx)*180/PI;
+        mouseang = Math.atan2(dy,dx)*180/PI;
+        if (Math.abs(lineang-mouseang)>90 && Math.abs(lineang-mouseang)<270) {
+            delta = 0;
+        }
+        vX += delta * linedx;
+        vY += delta * linedy;
+    } else {
+        vX += (mouseX - mX) * 0.25;
+        vY += (mouseY - mY) * 0.25;
     }
-    if (drawingrect) {
-      if (rX == -1) {
-        rX = mouseX;
-        rY = mouseY;
-      }
-      return;
-    }
-    if (pmX == -1) {
-      mX = mouseX;
-      mY = mouseY;
-      pmX = pmouseX;
-      pmY = pmouseY;
-      vX = 0;
-      vY = 0;
-    }
-    vX += (mouseX - mX) * 0.25;
-    vY += (mouseY - mY) * 0.25;
     vX *= 0.5;
     vY *= 0.5;
     mX += vX;
@@ -300,6 +310,25 @@ function draw() {
     }
     pmX = mX;
     pmY = mY;
+}
+
+function draw() {
+  fill(255);
+  if (mouseIsPressed) {
+    if (drawingline) {
+      if (lX == -1) {
+        lX = mouseX;
+        lY = mouseY;
+      }
+    }
+    if (drawingrect) {
+      if (rX == -1) {
+        rX = mouseX;
+        rY = mouseY;
+      }
+      return;
+    }
+    updateBrush();
     mouseT++;
   } else {
     mouseT = 0;
@@ -313,6 +342,7 @@ function draw() {
 var undohistoryblack = [];
 var undohistory = [];
 var undohistoryIndex = 0;
+var UNDO_HISTORY_MAX = 128;
 
 var shift = false;
 window.oncontextmenu = function(e) {
@@ -326,7 +356,7 @@ window.onmousedown = function(e) {
 window.onmouseup = function(e) {
   if (drawingline) {
     if (lX != -1) {
-      drawLine(lX,lY,mouseX,mouseY,brushSize,col);
+      //drawLine(lX,lY,mouseX,mouseY,brushSize,col);
       drawingline = false;
       lX = -1;
       lY = -1;
@@ -343,11 +373,20 @@ window.onmouseup = function(e) {
       rY = -1;
     }
   }
-  undohistoryIndex++;
-  createImageBitmap(canvas,0,0,cWidth,cHeight).then(function(data){
-    undohistory[undohistoryIndex]=data;
-    undohistoryblack[undohistoryIndex]=deepCopy(filled);
-  });
+  if (undohistoryIndex+1<UNDO_HISTORY_MAX) {
+      undohistoryIndex++;
+      createImageBitmap(canvas,0,0,cWidth,cHeight).then(function(data){
+        undohistory[undohistoryIndex]=data;
+        undohistoryblack[undohistoryIndex]=deepCopy(filled);
+      });
+  } else {
+      createImageBitmap(canvas,0,0,cWidth,cHeight).then(function(data){
+        undohistory.splice(0,1);
+        undohistoryblack.splice(0,1);
+        undohistory[undohistoryIndex]=data;
+        undohistoryblack[undohistoryIndex]=deepCopy(filled);
+      });
+  }
   undohistory.splice(undohistoryIndex+1);
   undohistoryblack.splice(undohistoryIndex+1);
 }
@@ -391,7 +430,7 @@ window.onkeydown = function(e) {
   if (!e.ctrlKey && !e.shiftKey && e.code == "Digit4") {
     brush = 3;
   }
-  if (!e.ctrlKey && !e.shiftKey && e.code == "KeyL") {
+  if (!e.ctrlKey && e.code == "ShiftLeft") {
     drawingline = true;
   }
   if (!e.ctrlKey && !e.shiftKey && e.code == "KeyR") {
