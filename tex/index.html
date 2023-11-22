@@ -95,7 +95,6 @@
                 value = XRegExp.replace(value, /\!\=/g, "\\ne ");
                 value = XRegExp.replace(value, /\<\=/g, "\\le ");
                 
-                
                 katex.render(value, math, {throwOnError:false, displayMode:true, fleqn:true, macros});
                 math.style.display = "inline-block";
                 math.style.padding = "16px";
