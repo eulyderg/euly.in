@@ -78,17 +78,17 @@
                 "\\intersection": "\\cap",
                 "\\iteral": "\\underset{\\raisebox{-0.11em}{$\\scriptsize{#1}$}}{\\overset{\\raisebox{0.1em}{$\\scriptsize{#2}$}}{\\raisebox{-0.44em}{\\huge\u0418}}}"
             };
-            //const funcs = ["arcsin","arccos","arctan","arctg","arcctg","arg","ch","cos","det","gcd","cosec","cosh","cot","cotg","coth","csc","ctg","cth","max","deg","dim","exp","hom","ker","lg","ln","log","min","plim","Pr","sup","sec","sin","sinh","sh","tan","tanh","tg","th"];
+            const funcs = ["arcsin","arccos","arctan","arctg","arcctg","arg","ch","cos","det","gcd","cosec","cosh","cot","cotg","coth","csc","ctg","cth","max","deg","dim","exp","hom","ker","lg","ln","log","min","plim","Pr","sup","sec","sin","sinh","sh","tan","tanh","tg","th"];
             function updateImage() {
                 var value = input.value;
                 
                 value = substituteBrackets(value,[["\\(","\\left("],["\\)","\\right)"]]);
                 value = substituteBrackets(value,[["\\[","\\left["],["\\]","\\right]"]]);
                 value = substituteBrackets(value,[["\\|{","\\left|"],["}\\|","\\right|"]]);
-                //for (var i=0;i<funcs.length;i++) {
-                //    value = XRegExp.replace(value, RegExp("\\b(?<!\\\\)"+funcs[i]+"\\\\left","g"), "\\"+funcs[i]+"\\!\\left");
-                //    value = XRegExp.replace(value, RegExp("\\b(?<!\\\\)"+funcs[i]+"(?!\\\\!)","g"), "\\"+funcs[i]);
-                //}
+                for (var i=0;i<funcs.length;i++) {
+                    value = XRegExp.replace(value, RegExp("\\\\"+funcs[i]+"\\\\left","g"), "\\"+funcs[i]+"\\!\\left");
+                    //value = XRegExp.replace(value, RegExp("\\b(?<!\\\\)"+funcs[i]+"(?!\\\\!)","g"), "\\"+funcs[i]);
+                }
                 value = XRegExp.replace(value, /[\r\n](?=.)/g, "\\\\");
                 value = XRegExp.replace(value, /[\r\n]/g, "\\\\\\\n");
                 value = XRegExp.replace(value, /\ (?=(\ )+?)/g, "\\ ");
