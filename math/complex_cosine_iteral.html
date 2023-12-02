@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Complex Cosine Iteral Filled Julia Set</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    </head>
+    <body>
+        <h3>Complex Cosine Iteral Filled Julia Set</h3>
+        <noscript>This page requires JavaScript to function.</noscript>
+        <canvas></canvas>
+        <script>
+        
+            // define some constant parameters.
+            const SIZE = 512;
+            const REGION = 16;
+            
+            const ITERATIONS = 8;
+            const TOLERANCE = 100;
+            
+            const COLOR = "#000000";    // black
+            
+            // derive some constants from those parameters.
+            const ZOOM = REGION / SIZE;
+            const RECENTERING = - REGION * 0.5;
+            
+            const SQUARETOLERANCE = TOLERANCE * TOLERANCE;
+            
+            // find the canvas.
+            var canvas = document.querySelector("canvas");
+            var canvasContext = canvas.getContext("2d");
+            
+            // set canvas properties.
+            canvas.width = SIZE;
+            canvas.height = SIZE;
+            canvasContext.fillStyle = COLOR;
+            
+            // main routine //
+            var vertical = 0;
+            function computeRow() {
+            
+                for ( var horizontal=0; horizontal<SIZE; horizontal++ ) {
+                    
+                    // compute complex cosine again and again.
+                    var z = [ horizontal*ZOOM+RECENTERING, vertical*ZOOM+RECENTERING ];
+                    for ( var i=0; i<ITERATIONS; i++ ){
+                        // z = cos(z)
+                        z = [
+                            Math.cos(z[0]) * Math.cosh(z[1]),
+                            -Math.sin(z[0]) * Math.sinh(z[1])
+                        ];
+                    }
+                    
+                    // draw pixel if process remains bounded.
+                    var squareMagnitude = z[0]*z[0] + z[1]*z[1];
+                    if ( squareMagnitude < SQUARETOLERANCE ) {
+                        canvasContext.fillRect( horizontal, vertical, 1, 1 ); // draw pixel
+                    }
+                    
+                }
+                
+                // compute next row of pixels, so long as we're still on the canvas.
+                vertical ++;
+                if ( vertical < SIZE ) { computeRow(); }
+                
+            };
+            
+            // begin.
+            computeRow();
+            
+        </script>
+    </body>
+</html>
