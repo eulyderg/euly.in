@@ -76,7 +76,19 @@
                 "\\f": "\\operatorname{f}",
                 "\\union": "\\cup",
                 "\\intersection": "\\cap",
-                "\\iteral": "\\underset{\\raisebox{-0.11em}{$\\scriptsize{#1}$}}{\\overset{\\raisebox{0.1em}{$\\scriptsize{#2}$}}{\\raisebox{-0.44em}{\\huge\u0418}}}"
+                //"\\iteral": "\\underset{\\raisebox{-0.11em}{$\\scriptsize{#1}$}}{\\overset{\\raisebox{0.1em}{$\\scriptsize{#2}$}}{\\raisebox{-0.44em}{\\huge\u0418}}}",
+                "\\matrix": "\\begin{matrix}#1\\end{matrix}",
+                "\\pmatrix": "\\begin{pmatrix}#1\\end{pmatrix}",
+                "\\bmatrix": "\\begin{bmatrix}#1\\end{bmatrix}",
+                "\\Bmatrix": "\\begin{Bmatrix}#1\\end{Bmatrix}",
+                "\\vmatrix": "\\begin{vmatrix}#1\\end{vmatrix}",
+                "\\Vmatrix": "\\begin{Vmatrix}#1\\end{Vmatrix}",
+                "\\mat": "\\begin{matrix}#1\\end{matrix}",
+                "\\pmat": "\\begin{pmatrix}#1\\end{pmatrix}",
+                "\\bmat": "\\begin{bmatrix}#1\\end{bmatrix}",
+                "\\Bmat": "\\begin{Bmatrix}#1\\end{Bmatrix}",
+                "\\vmat": "\\begin{vmatrix}#1\\end{vmatrix}",
+                "\\Vmat": "\\begin{Vmatrix}#1\\end{Vmatrix}",
             };
             const funcs = ["arcsin","arccos","arctan","arctg","arcctg","arg","ch","cos","det","gcd","cosec","cosh","cot","cotg","coth","csc","ctg","cth","max","deg","dim","exp","hom","ker","lg","ln","log","min","plim","Pr","sup","sec","sin","sinh","sh","tan","tanh","tg","th"];
             function updateImage() {
