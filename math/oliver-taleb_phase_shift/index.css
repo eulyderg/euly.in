@@ -36,7 +36,7 @@ align-right  { display: block; text-align: right; }
 
 div[indent] { padding-left: 2em; }
 
-katex-area { display: inline-block; cursor: default; user-select: none; }
+katex-area { display: inline-block; cursor: default; user-select: revert; }
 .katex-display { margin: 0px; }
 katex-area > .katex-display.fleqn > .katex { padding-left: 0px; }
 katex-area[indent] > .katex-display.fleqn > .katex { padding-left: 2em; }
