@@ -54,8 +54,17 @@ summary:hover { transform: translate( 1px, -1px ); box-shadow: -1px 1px 8px #EEE
 
 .summary-caption { display: inline-block; width: 8em; }
 .definition { padding: 8pt; border: 2pt dashed black; }
-.definition-header { text-shadow: -3px 0px white, -2px 0px white, -1px 0px white, 1px 0px white, 2px 0px white, 3px 0px white, -3px -1px white, -2px -1px white, -1px -1px white, 1px -1px white, 2px -1px white, 3px -1px white; }
+/*.definition-header { text-shadow: -3px 0px white, -2px 0px white, -1px 0px white, 1px 0px white, 2px 0px white, 3px 0px white, -3px -1px white, -2px -1px white, -1px -1px white, 1px -1px white, 2px -1px white, 3px -1px white; }*/
+.definition-header::before { text-shadow: -3px 0px white, -2px 0px white, -1px 0px white, 1px 0px white, 2px 0px white, 3px 0px white, -3px -1px white, -2px -1px white, -1px -1px white, 1px -1px white, 2px -1px white, 3px -1px white; content: "Definition"; position: absolute; z-index:-1; }
 
 .bottom-padding {
     margin-bottom: 8pt;
+}
+
+.definition-header::before {
+    color: white;
+}
+    
+.definition-header::before {
+    font-style: italic;
 }
