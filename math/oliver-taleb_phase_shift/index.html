@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- page information -->
+        <title>Oliver-Taleb Phase Shift</title>
+        
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        
+        <!-- preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin="anonymous"/>
+        <link rel="preconnect" href="https://unpkg.com" crossorigin="anonymous"/>
+        
+        <!-- preload -->
+        <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/ebgaramond/v27/SlGWmQSNjdsmc35JDF1K5GRweDs1Zw.woff2"/>
+        <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/ebgaramond/v27/SlGUmQSNjdsmc35JDF1K5GR1SDk.woff2"/>
+        <link rel="preload" as="style" type="text/css" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"/>
+        <link rel="preload" as="style" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"/>
+        <link rel="preload" as="style" type="text/css" href="index.css"/>
+        <link rel="preload" as="style" type="text/css" href="print.css"/>
+        <link rel="preload" as="script" type="text/javascript" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"/>
+        <link rel="preload" as="script" type="text/javascript" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"/>
+        <link rel="preload" as="script" type="text/javascript" href="https://unpkg.com/xregexp@5.1.1/xregexp-all.js"/>
+        <link rel="preload" as="script" type="text/javascript" href="index.js"/>
+        
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;0,800;1,400;1,600;1,800&display=swap"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css"/>
+        
+        <link rel="stylesheet" href="index.css"/>
+        <link rel="stylesheet" href="print.css" media="print"/>
+        
+        <!-- scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js"></script>
+        <script src="https://unpkg.com/xregexp@5.1.1/xregexp-all.js"></script>
+        
+    </head>
+    <body>
+        <!-- heading -->
+        <h1>Oliver-Taleb Phase Shift</h1>
+        <align-right><small><i>Euly Oliver, Loïc Taleb</i></small></align-right>
+        
+        <!-- definition -->
+        <h2 class="definition-header"><i><b-heavy>Definition</b-heavy></i></h2>
+        <div class="bottom-padding">
+            <div class="bottom-padding"><katex-area class="definition">\overset\alpha{\mathrm{P}}f(x) = {1/2\pi} \int_{-\infty}^\infty\!\hat f(\xi) e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi</katex-area></div>
+            <div class="bottom-padding"><small><katex-area>\hat f(\xi) =\int_{-\infty}^{\infty}\!f(t) e^{-i\xi t}\,dt</katex-area></small></div>
+            <div class="bottom-padding"><small><katex-area>\mathrm{sgn}\(x\)=\begin{cases}-1&\text{if }x\lt0\\\ \,0&\text{if }x=0\\\ \,1&\text{if }x\gt0\end{cases}</katex-area></small></div>
+        </div>
+        
+        <!-- properties section -->
+        <h2><i><b-heavy>Properties</b-heavy></i></h2>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Additivity:</b></span>
+                <small><katex-area>\overset\alpha{\mathrm{P}}({f+g})(x)=\overset\alpha{\mathrm{P}}f(x)+\overset\alpha{\mathrm{P}}g(x)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset\alpha{\mathrm{P}}({f+g})(x) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!(\hat f\(\xi\)+\hat g\(\xi\))e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}+\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi+{1/2\pi} \int_{-\infty}^\infty\!\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= \overset\alpha{\mathrm{P}}f(x)+\overset\alpha{\mathrm{P}}g(x)
+                \end{aligned}
+            </katex-area>
+            <div><katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i></div>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Homogeneity:</b></span>
+                <small><katex-area>\overset\alpha{\mathrm{P}}c*\!f\(x\) = c*\overset\alpha{\mathrm{P}}f\(x\)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset\alpha{\mathrm{P}}c*\!f\(x\) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!c*\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= c*{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= c*\overset\alpha{\mathrm{P}}f\(x\)
+                \end{aligned}
+            </katex-area>
+            <div><katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i></div>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Identity:</b></span>
+                <small><katex-area>\overset{\pi}{\mathrm{P}}f\(x)=-f\(x)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset\pi{\mathrm{P}}f\(x\) &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\pi}\,d\xi
+                    &= {1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}e^{i\pi}\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\pi}\,d\xi)
+                    &= {1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}(-1)\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}(-1)\,d\xi)
+                    &= -{1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
+                    &= -{1/2\pi}\int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi
+                    &= -f(x)
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Identity:</b></span>
+                <small><katex-area>\overset{\alpha}{\mathrm{P}}f\(x)+\overset{-\alpha}{\mathrm{P}}f\(x)=2\cos(\alpha)f\(x)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Loïc</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\int_{\R}\hat f\(\xi\) \ e^{-i\,\mathrm{sgn}\(\xi\)\alpha} e^{i\xi x} \ d\xi
+                    &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                \end{aligned}
+                \begin{aligned}
+                    \overset{\alpha}{\mathrm{P}}f\(x)+\overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!((e^{i\alpha}\!+\!e^{-i\alpha})\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+(e^{i\alpha}\!+\!e^{-i\alpha})\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    &= {e^{i\alpha}+e^{-i\alpha}/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    &= {\cos(\alpha)/\pi}\int_{\R}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
+                    &= 2\cos(\alpha)f\(x)
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <!-- main script -->
+        <script src="index.js"></script>
+    </body>
+</html>

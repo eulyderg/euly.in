@@ -1,0 +1,61 @@
+body {
+    font-family: 'EB Garamond', serif;
+    margin-top: 4em;
+    margin-bottom: 4em;
+    max-width: 75vw;
+    margin-inline: auto;
+    background-color: white;
+    color: black;
+    overflow-y: scroll;
+}
+
+h1 {
+    margin: 0px;
+    line-height: 1.0;
+    font-size: 32pt;
+    font-weight: 600;
+    border-bottom: 3px dashed black;
+    margin-bottom: 2pt;
+}
+
+h2 {
+    margin: 0px;
+    margin-top: 1em;
+    line-height: 1.0;
+    font-size: 20pt;
+    position: relative;
+    z-index: 1;
+}
+
+b { font-weight: 600; }
+b-heavy { font-weight: 800; }
+
+align-left   { display: block; text-align: left; }
+align-center { display: block; text-align: center; }
+align-right  { display: block; text-align: right; }
+
+div[indent] { padding-left: 2em; }
+
+katex-area { display: inline-block; cursor: default; user-select: none; }
+.katex-display { margin: 0px; }
+katex-area > .katex-display.fleqn > .katex { padding-left: 0px; }
+katex-area[indent] > .katex-display.fleqn > .katex { padding-left: 2em; }
+
+summary {
+    cursor: pointer;
+    padding: 4px;
+    width: fit-content;
+    user-select: none;
+    height: 32px;
+}
+summary * { cursor: pointer; }
+details[open] > summary { border-bottom: 1px dotted black; }
+summary:hover { transform: translate( 1px, -1px ); box-shadow: -1px 1px 8px #EEEEEE; }
+
+.summary-caption { display: inline-block; width: 8em; }
+.definition { padding: 8pt; border: 2pt dashed black; }
+.definition-header { text-shadow: -3px 0px white, -2px 0px white, -1px 0px white, 1px 0px white, 2px 0px white, 3px 0px white, -3px -1px white, -2px -1px white, -1px -1px white, 1px -1px white, 2px -1px white, 3px -1px white; }
+
+.bottom-padding {
+    margin-bottom: 8pt;
+}
