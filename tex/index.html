@@ -70,7 +70,6 @@
                 "\\)": ")",
                 "\\[": "[",
                 "\\]": "]",
-                "\\*": "*",
                 "/": "\\over",
                 "*": "\\cdot",
                 "\\f": "\\operatorname{f}",
@@ -107,6 +106,7 @@
                 value = XRegExp.replace(value, /\>\=/g, "\\ge ");
                 value = XRegExp.replace(value, /\!\=/g, "\\ne ");
                 value = XRegExp.replace(value, /\<\=/g, "\\le ");
+                value = XRegExp.replace( value, /\\\*/g, "*" );
                 
                 katex.render(value, math, {throwOnError:false, displayMode:true, fleqn:true, macros});
                 math.style.display = "inline-block";

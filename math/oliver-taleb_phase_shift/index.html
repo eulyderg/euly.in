@@ -107,6 +107,11 @@
                     &= -{1/2\pi}\int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi
                     &= -f(x)
                 \end{aligned}
+                \begin{aligned}
+                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\int_{\R}\hat f\(\xi\) \ e^{-i\,\mathrm{sgn}\(\xi\)\alpha} e^{i\xi x} \ d\xi
+                    &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                \end{aligned}
             </katex-area>
             <br/>
             <br/>
@@ -126,7 +131,9 @@
                     \overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                 \end{aligned}
                 \begin{aligned}
-                    \overset{\alpha}{\mathrm{P}}f\(x)+\overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!((e^{i\alpha}\!+\!e^{-i\alpha})\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+(e^{i\alpha}\!+\!e^{-i\alpha})\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \overset{\alpha}{\mathrm{P}}f\(x)+\overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    & \ \ \ \ \ + {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    &= {1/2\pi}\!((e^{i\alpha}\!+\!e^{-i\alpha})\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+(e^{i\alpha}\!+\!e^{-i\alpha})\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {e^{i\alpha}+e^{-i\alpha}/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {\cos(\alpha)/\pi}\int_{\R}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
                     &= 2\cos(\alpha)f\(x)
