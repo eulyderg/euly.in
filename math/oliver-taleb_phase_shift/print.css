@@ -7,7 +7,7 @@ details > summary {
     list-style: none;
     padding: 0px;
     padding-bottom: 2px;
-    border-bottom: 1px dotted black;
+    min-width: fit-content;
 }
 details > summary::marker, details > summary::-webkit-details-marker { display: none; }
 
