@@ -1,2 +1,4 @@
 details > katex-area { padding-right: 12.5vw; }
 summary > katex-area { padding-right: 0px; }
+summary:hover { transform: translate( 0px, 0px ); box-shadow: none; }
+summary:active { transform: translate( 1px, -1px ); box-shadow: -1px 1px 8px #EEEEEE; }
