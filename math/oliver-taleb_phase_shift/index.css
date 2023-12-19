@@ -53,7 +53,12 @@ summary * { cursor: pointer; }
 details[open] > summary { border-bottom: 1px dotted black; }
 summary:hover { transform: translate( 1px, -1px ); box-shadow: -1px 1px 8px #EEEEEE; }
 
-.summary-caption { display: inline-block; width: 8em; }
+.summary-caption { display: inline-block; width: 8em; height: 16px; }
+summary kakex-area { height: 16px; color: red; }
+
+details > summary::marker, details > summary::-webkit-details-marker { height:32px; }
+
+
 .definition { padding: 8pt; border: 2pt dashed black; }
 .definition-header::before {
     text-shadow: -3px 0px white, -2px 0px white, -1px 0px white, 1px 0px white, 2px 0px white, 3px 0px white,
