@@ -59,7 +59,6 @@ for ( var element of katex_areas ) {
     value = XRegExp.replace( value, /[\r\n](?=.)/g, "\\\\" );
     value = XRegExp.replace( value, /[\r\n]/g, "\\\\\\\n" );
     value = XRegExp.replace( value, /&amp;/g, "&" );
-    value = XRegExp.replace( value, /\\\*/g, "*" );
     
     katex.render( value, element, { throwOnError:false, displayMode:true, fleqn:true, macros } );
 }

@@ -47,6 +47,7 @@ summary {
     user-select: none;
     height: 32px;
     width: max-content;
+    line-height: 16px;
 }
 summary * { cursor: pointer; }
 details[open] > summary { border-bottom: 1px dotted black; }
@@ -65,3 +66,5 @@ summary:hover { transform: translate( 1px, -1px ); box-shadow: -1px 1px 8px #EEE
 }
 
 .bottom-padding { margin-bottom: 8pt; }
+
+.footnote { border: 1px solid black; padding: 4px; display: block; width: max-content;  }

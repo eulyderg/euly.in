@@ -70,26 +70,32 @@
                     &= \overset\alpha{\mathrm{P}}f(x)+\overset\alpha{\mathrm{P}}g(x)
                 \end{aligned}
             </katex-area>
-            <div><katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i></div>
             <br/>
+            <br/>
+            <div class="footnote">
+                <katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i>
+            </div>
             <br/>
         </details>
         
         <details>
             <summary>
                 <span class="summary-caption"><b>Homogeneity:</b></span>
-                <small><katex-area>\overset\alpha{\mathrm{P}}c*\!f\(x\) = c*\overset\alpha{\mathrm{P}}f\(x\)</katex-area></small>
+                <small><katex-area>\overset\alpha{\mathrm{P}}c\cdot\!f\(x\) = c\cdot\overset\alpha{\mathrm{P}}f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}c*\!f\(x\) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!c*\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= c*{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= c*\overset\alpha{\mathrm{P}}f\(x\)
+                    \overset\alpha{\mathrm{P}}c\cdot\!f\(x\) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!c\cdot\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= c\cdot{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= c\cdot\overset\alpha{\mathrm{P}}f\(x\)
                 \end{aligned}
             </katex-area>
-            <div><katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i></div>
             <br/>
+            <br/>
+            <div class="footnote">
+                <katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i>
+            </div>
             <br/>
         </details>
         
@@ -108,10 +114,47 @@
                     &= -{1/2\pi}\int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi
                     &= -f(x)
                 \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Inverse:</b></span>
+                <small><katex-area>\overset\alpha{\mathrm{P}}{}^{-1}=\overset{-\alpha}{\mathrm{P}}</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset\alpha{\mathrm{P}}f &= x\mapsto\mathcal F^{-1}\Big\(\xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)
+                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\) &= \zeta\mapsto\mathcal F\bigg\(x\mapsto\mathcal F^{-1}\Big\(\xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
+                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\) &= \xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}
+                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha)}
+                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\mathcal Ff\(\xi\)
+                    y\mapsto\mathcal F^{-1}\bigg\(\zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\mathcal F^{-1}\big\(\xi\mapsto\mathcal Ff\(\xi\)\big\)\(y\)
+                    x\mapsto\mathcal F^{-1}\bigg\(\xi\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
+                    \overset{-\alpha}{\mathrm{P}}\Big\(\overset\alpha{\mathrm{P}}f\Big\)&= \overset\alpha{\mathrm{P}}{}^{-1}\Big\(\overset\alpha{\mathrm{P}}f\Big\)
+                    \overset{-\alpha}{\mathrm{P}} &= \overset\alpha{\mathrm{P}}{}^{-1}
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Lemma:</b></span>
+                <small><small><katex-area>\overset\alpha{\mathrm{P}}f\(x) = {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)</katex-area></small></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Loïc</i></small></div>
+            <katex-area indent>
                 \begin{aligned}
                     \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\int_{\R}\hat f\(\xi\) \ e^{-i\,\mathrm{sgn}\(\xi\)\alpha} e^{i\xi x} \ d\xi
+                    &= {1/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\alpha}e^{i\xi x} \ d\xi+\!\int_0^\infty\hat f\(\xi\) \ e^{-i\alpha}e^{i\xi x} \ d\xi)
                     &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
-                    \overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                 \end{aligned}
             </katex-area>
             <br/>
@@ -127,8 +170,7 @@
             <div><small><i><b>Proof:</b> Loïc</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\int_{\R}\hat f\(\xi\) \ e^{-i\,\mathrm{sgn}\(\xi\)\alpha} e^{i\xi x} \ d\xi
-                    &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     \overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                 \end{aligned}
                 \begin{aligned}
@@ -136,10 +178,112 @@
                     & \ \ \ \ \ + {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {1/2\pi}\!((e^{i\alpha}\!+\!e^{-i\alpha})\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+(e^{i\alpha}\!+\!e^{-i\alpha})\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {e^{i\alpha}+e^{-i\alpha}/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
-                    &= {\cos(\alpha)/\pi}\int_{\R}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
+                    &\overset{\ast^1}= {\cos(\alpha)/\pi}\int_{\R}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
                     &= 2\cos(\alpha)f\(x)
                 \end{aligned}
             </katex-area>
+            <br/>
+            <br/>
+            <div class="footnote">
+                <katex-area>\ast^1\ \ </katex-area><i>Identity: </i><small><small><katex-area>{e^{i\alpha}+e^{-i\alpha}/2}=\cos(\alpha)</katex-area></small></small>
+            </div>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Identity:</b></span>
+                <small><katex-area>\overset{\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) = 2\sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Loïc</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    -\overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(-e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi-e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                \end{aligned}
+                \begin{aligned}
+                    \overset{\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) &= {1/2\pi} \! ((e^{i\alpha}-e^{-i\alpha})\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi + (e^{-i\alpha}-e^{i\alpha})\int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
+                    &= {e^{i\alpha}-e^{-i\alpha}/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
+                    &\overset{\ast^1}= {i\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
+                    &= {\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
+                    &= {\sin(\alpha)/\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi){\pi/2}}\,d\xi
+                    &= 2\sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <div class="footnote">
+                <katex-area>\ast^1\ \ </katex-area><i>Identity: </i><small><small><katex-area>{e^{i\alpha}-e^{-i\alpha}/2}=i\sin(\alpha)</katex-area></small></small>
+            </div>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Identity:</b></span>
+                <small><katex-area>\overset{\alpha}{\mathrm{P}}f\(x\) = \cos(\alpha)f\(x\) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Loïc</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset{\alpha}{\mathrm{P}}f\(x\) &= {\overset{\alpha}{\mathrm{P}}f\(x\)+\overset{\alpha}{\mathrm{P}}f\(x\) / 2} + 0
+                    &= {\overset{\alpha}{\mathrm{P}}f\(x\)+\overset{\alpha}{\mathrm{P}}f\(x\) / 2} + {\overset{-\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) / 2}
+                    &= {\overset{\alpha}{\mathrm{P}}f\(x\)+\overset{-\alpha}{\mathrm{P}}f\(x\) + \overset{\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) / 2}
+                    &= {2\cos(\alpha)f\(x\) + 2\sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\) / 2}
+                    &= \cos(\alpha)f\(x\) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Lemma:</b></span>
+                <small><katex-area>\overset{\pi/2}{\mathrm{P}}f\(x\) = -\overset{-{\pi/2}}{\mathrm{P}}f\(x\)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\) &= {\sin(\alpha)/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
+                    &= -{\sin(\alpha)/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}e^{-i\pi}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}e^{i\pi}\,d\xi)
+                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi){\pi/2}}e^{i\,\mathrm{sgn}(\xi)\pi}\,d\xi
+                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi)({\pi/2}-\pi)}\,d\xi
+                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi)(-{\pi/2})}\,d\xi
+                    \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\) &= -\sin(\alpha) \overset{-{\pi/2}}{\mathrm{P}}f\(x\)
+                    \overset{\pi/2}{\mathrm{P}}f\(x\) &= -\overset{-{\pi/2}}{\mathrm{P}}f\(x\)
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Linearity of Composition:</b></span>
+                <small><katex-area>\overset{\alpha}{\mathrm{P}} \overset{\beta}{\mathrm{P}}f\(x\) = \overset{\alpha+\beta}{\mathrm{P}}\!f\(x\)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \overset{\alpha}{\mathrm{P}} \overset{\beta}{\mathrm{P}}f\(x\) &= \cos(\alpha)\overset{\beta}{\mathrm{P}}f\(x\) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}\overset{\beta}{\mathrm{P}}f\(x\)
+                    &= \cos\(\alpha\)\!(\cos\(\beta\)f\(x\)+\sin(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}\!(\cos(\beta)f\(x\)-\sin(\beta)\overset{-{\pi/2}}{\mathrm{P}}\!f\(x\))
+                    &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\) + \sin(\alpha)\cos(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)-\sin(\alpha)\sin(\beta)\overset{\pi/2}{\mathrm{P}}\overset{-{\pi/2}}{\mathrm{P}}\!f\(x\)
+                    &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\) + \sin(\alpha)\cos(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)-\sin(\alpha)\sin\(\beta\)f\(x\)
+                    &= \Big\(\!\cos(\alpha)\cos\(\beta\)-\sin(\alpha)\sin\(\beta\)\Big\)f\(x\) + \Big\(\!\cos\(\alpha\)\sin\(\beta\)+\sin\(\alpha\)\cos\(\beta\)\Big\)\overset{\pi/2}{\mathrm{P}}f\(x\)
+                    &\overset{\!\!\!\ast^1\ast^2\!\!\!}= \cos(\alpha+\beta)f\(x\) + \sin(\alpha+\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)
+                    &= \overset{\alpha+\beta}{\mathrm{P}}\!f\(x\)
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <div class="footnote">
+                <katex-area>\ast^1\ \ </katex-area><i>Identity: </i><small><katex-area>\cos(x)\cos(y)-\sin(x)\sin(y)=\cos(x+y)</katex-area></small><br/>
+                <katex-area>\ast^2\ \ </katex-area><i>Identity: </i><small><katex-area>\cos(x)\sin(y)+\sin(x)\cos(y)=\sin(x+y)</katex-area></small>
+            </div>
+            <br/>
         </details>
         
         <!-- main script -->
