@@ -49,7 +49,7 @@ const macros = {
     "\\vmat": "\\begin{vmatrix}#1\\end{vmatrix}",
     "\\Vmat": "\\begin{Vmatrix}#1\\end{Vmatrix}",
     "\\phaseshift": "\\overset{#1}{\\rm{P}}",
-    "\\FT": "{\cal F}"
+    "\\FT": "{\\cal F}"
 };
 
 var katex_areas = document.getElementsByTagName("katex-area");

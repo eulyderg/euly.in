@@ -48,7 +48,7 @@
         <!-- definition -->
         <h2 class="definition-header"><i><b-heavy>Definition</b-heavy></i></h2>
         <div class="bottom-padding">
-            <div class="bottom-padding"><katex-area class="definition">\overset\alpha{\mathrm{P}}f(x) = {1/2\pi} \int_{-\infty}^\infty\!\hat f(\xi) e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi</katex-area></div>
+            <div class="bottom-padding"><katex-area class="definition">\phaseshift\alpha f(x) = {1/2\pi} \int_{-\infty}^\infty\!\hat f(\xi) e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi</katex-area></div>
             <div class="bottom-padding"><small><katex-area>\hat f(\xi) =\int_{-\infty}^{\infty}\!f(t) e^{-i\xi t}\,dt</katex-area></small></div>
             <div class="bottom-padding"><small><katex-area>\mathrm{sgn}\(x\)=\begin{cases}-1&\text{if }x\lt0\\\ \,0&\text{if }x=0\\\ \,1&\text{if }x\gt0\end{cases}</katex-area></small></div>
         </div>
@@ -59,15 +59,15 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Additivity:</b></span>
-                <small><katex-area>\overset\alpha{\mathrm{P}}({f+g})(x)=\overset\alpha{\mathrm{P}}f(x)+\overset\alpha{\mathrm{P}}g(x)</katex-area></small>
+                <small><katex-area>\phaseshift\alpha ({f+g})(x)=\phaseshift\alpha f(x)+\phaseshift\alpha g(x)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}({f+g})(x) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!(\hat f\(\xi\)+\hat g\(\xi\))e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    \phaseshift\alpha ({f+g})(x) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!(\hat f\(\xi\)+\hat g\(\xi\))e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
                     &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}+\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
                     &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi+{1/2\pi} \int_{-\infty}^\infty\!\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= \overset\alpha{\mathrm{P}}f(x)+\overset\alpha{\mathrm{P}}g(x)
+                    &= \phaseshift\alpha f(x)+\phaseshift\alpha g(x)
                 \end{aligned}
             </katex-area>
             <br/>
@@ -81,14 +81,14 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Homogeneity:</b></span>
-                <small><katex-area>\overset\alpha{\mathrm{P}}c\cdot\!f\(x\) = c\cdot\overset\alpha{\mathrm{P}}f\(x\)</katex-area></small>
+                <small><katex-area>\phaseshift\alpha c\cdot\!f\(x\) = c\cdot\phaseshift\alpha f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}c\cdot\!f\(x\) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!c\cdot\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    \phaseshift\alpha c\cdot\!f\(x\) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!c\cdot\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
                     &= c\cdot{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= c\cdot\overset\alpha{\mathrm{P}}f\(x\)
+                    &= c\cdot\phaseshift\alpha f\(x\)
                 \end{aligned}
             </katex-area>
             <br/>
@@ -102,12 +102,12 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Identity:</b></span>
-                <small><katex-area>\overset{\pi}{\mathrm{P}}f\(x)=-f\(x)</katex-area></small>
+                <small><katex-area>\phaseshift{\pi} f\(x)=-f\(x)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\pi{\mathrm{P}}f\(x\) &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\pi}\,d\xi
+                    \phaseshift\pi f\(x\) &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\pi}\,d\xi
                     &= {1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}e^{i\pi}\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\pi}\,d\xi)
                     &= {1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}(-1)\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}(-1)\,d\xi)
                     &= -{1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
@@ -123,23 +123,23 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Inverse:</b></span>
-                <small><katex-area>\overset\alpha{\mathrm{P}}{}^{-1}=\overset{-\alpha}{\mathrm{P}}</katex-area></small>
+                <small><katex-area>\phaseshift\alpha {}^{-1}=\phaseshift{-\alpha} </katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}f &= x\mapsto\mathcal F^{-1}\Big\(\xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)
-                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\) &= \zeta\mapsto\mathcal F\bigg\(x\mapsto\mathcal F^{-1}\Big\(\xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
-                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\) &= \xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}
-                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\mathcal Ff\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha)}
-                    \zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\mathcal Ff\(\xi\)
-                    y\mapsto\mathcal F^{-1}\bigg\(\zeta\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\mathcal F^{-1}\big\(\xi\mapsto\mathcal Ff\(\xi\)\big\)\(y\)
-                    x\mapsto\mathcal F^{-1}\bigg\(\xi\mapsto\mathcal F\Big\(\overset\alpha{\mathrm{P}}f\Big\)\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
-                    \overset{-\alpha}{\mathrm{P}}\Big\(\overset\alpha{\mathrm{P}}f\Big\) &= f\qquad\text{let }\beta=-\alpha
-                    \overset{-\beta}{\mathrm{P}}\Big\(\overset{\beta}{\mathrm{P}}f\Big\) &= f
-                    \overset{-\(-\alpha\)}{\mathrm{P}}\Big\(\overset{-\alpha}{\mathrm{P}}f\Big\) &= f
-                    \overset{\alpha}{\mathrm{P}}\Big\(\overset{-\alpha}{\mathrm{P}}f\Big\) &= f
-                    \overset{-\alpha}{\mathrm{P}} &= \overset\alpha{\mathrm{P}}{}^{-1}
+                    \phaseshift\alpha f &= x\mapsto\FT  ^{-1}\Big\(\xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \zeta\mapsto\FT  \bigg\(x\mapsto\FT  ^{-1}\Big\(\xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha)}
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT  f\(\xi\)
+                    y\mapsto\FT  ^{-1}\bigg\(\zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\FT  ^{-1}\big\(\xi\mapsto\FT  f\(\xi\)\big\)\(y\)
+                    x\mapsto\FT  ^{-1}\bigg\(\xi\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
+                    \phaseshift{-\alpha} \Big\(\phaseshift\alpha f\Big\) &= f\qquad\text{let }\beta=-\alpha
+                    \phaseshift{-\beta} \Big\(\phaseshift{\beta} f\Big\) &= f
+                    \phaseshift{-\(-\alpha\)} \Big\(\phaseshift{-\alpha} f\Big\) &= f
+                    \phaseshift{\alpha} \Big\(\phaseshift{-\alpha} f\Big\) &= f
+                    \phaseshift{-\alpha}  &= \phaseshift\alpha {}^{-1}
                 \end{aligned}
             </katex-area>
             <br/>
@@ -150,12 +150,12 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Lemma:</b></span>
-                <small><small><katex-area>\overset\alpha{\mathrm{P}}f\(x) = {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)</katex-area></small></small>
+                <small><small><katex-area>\phaseshift\alpha f\(x) = {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)</katex-area></small></small>
             </summary>
             <div><small><i><b>Proof:</b> Loïc</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\int_{\R}\hat f\(\xi\) \ e^{-i\,\mathrm{sgn}\(\xi\)\alpha} e^{i\xi x} \ d\xi
+                    \phaseshift\alpha f\(x) &= {1/2\pi}\int_{\R}\hat f\(\xi\) \ e^{-i\,\mathrm{sgn}\(\xi\)\alpha} e^{i\xi x} \ d\xi
                     &= {1/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\alpha}e^{i\xi x} \ d\xi+\!\int_0^\infty\hat f\(\xi\) \ e^{-i\alpha}e^{i\xi x} \ d\xi)
                     &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                 \end{aligned}
@@ -168,16 +168,16 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Identity:</b></span>
-                <small><katex-area>\overset{\alpha}{\mathrm{P}}f\(x)+\overset{-\alpha}{\mathrm{P}}f\(x)=2\cos(\alpha)f\(x)</katex-area></small>
+                <small><katex-area>\phaseshift{\alpha} f\(x)+\phaseshift{-\alpha} f\(x)=2\cos(\alpha)f\(x)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Loïc</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
-                    \overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \phaseshift\alpha f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \phaseshift{-\alpha} f\(x) &= {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                 \end{aligned}
                 \begin{aligned}
-                    \overset{\alpha}{\mathrm{P}}f\(x)+\overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \phaseshift{\alpha} f\(x)+\phaseshift{-\alpha} f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     & \ \ \ \ \ + {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {1/2\pi}\!((e^{i\alpha}\!+\!e^{-i\alpha})\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+(e^{i\alpha}\!+\!e^{-i\alpha})\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {e^{i\alpha}+e^{-i\alpha}/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
@@ -196,21 +196,21 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Identity:</b></span>
-                <small><katex-area>\overset{\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) = 2\sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)</katex-area></small>
+                <small><katex-area>\phaseshift{\alpha} f\(x\)-\phaseshift{-\alpha} f\(x\) = 2\sin(\alpha) \phaseshift{\pi/2} f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Loïc</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset\alpha{\mathrm{P}}f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
-                    -\overset{-\alpha}{\mathrm{P}}f\(x) &= {1/2\pi}\!(-e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi-e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    \phaseshift\alpha f\(x) &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
+                    -\phaseshift{-\alpha} f\(x) &= {1/2\pi}\!(-e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi-e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                 \end{aligned}
                 \begin{aligned}
-                    \overset{\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) &= {1/2\pi} \! ((e^{i\alpha}-e^{-i\alpha})\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi + (e^{-i\alpha}-e^{i\alpha})\int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
+                    \phaseshift{\alpha} f\(x\)-\phaseshift{-\alpha} f\(x\) &= {1/2\pi} \! ((e^{i\alpha}-e^{-i\alpha})\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi + (e^{-i\alpha}-e^{i\alpha})\int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
                     &= {e^{i\alpha}-e^{-i\alpha}/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
                     &\overset{\ast^1}= {i\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
                     &= {\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
                     &= {\sin(\alpha)/\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi){\pi/2}}\,d\xi
-                    &= 2\sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)
+                    &= 2\sin(\alpha) \phaseshift{\pi/2} f\(x\)
                 \end{aligned}
             </katex-area>
             <br/>
@@ -224,16 +224,16 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Identity:</b></span>
-                <small><katex-area>\overset{\alpha}{\mathrm{P}}f\(x\) = \cos(\alpha)f\(x\) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)</katex-area></small>
+                <small><katex-area>\phaseshift{\alpha} f\(x\) = \cos(\alpha)f\(x\) + \sin(\alpha) \phaseshift{\pi/2} f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Loïc</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset{\alpha}{\mathrm{P}}f\(x\) &= {\overset{\alpha}{\mathrm{P}}f\(x\)+\overset{\alpha}{\mathrm{P}}f\(x\) / 2} + 0
-                    &= {\overset{\alpha}{\mathrm{P}}f\(x\)+\overset{\alpha}{\mathrm{P}}f\(x\) / 2} + {\overset{-\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) / 2}
-                    &= {\overset{\alpha}{\mathrm{P}}f\(x\)+\overset{-\alpha}{\mathrm{P}}f\(x\) + \overset{\alpha}{\mathrm{P}}f\(x\)-\overset{-\alpha}{\mathrm{P}}f\(x\) / 2}
-                    &= {2\cos(\alpha)f\(x\) + 2\sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\) / 2}
-                    &= \cos(\alpha)f\(x\) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\)
+                    \phaseshift{\alpha} f\(x\) &= {\phaseshift{\alpha} f\(x\)+\phaseshift{\alpha} f\(x\) / 2} + 0
+                    &= {\phaseshift{\alpha} f\(x\)+\phaseshift{\alpha} f\(x\) / 2} + {\phaseshift{-\alpha} f\(x\)-\phaseshift{-\alpha} f\(x\) / 2}
+                    &= {\phaseshift{\alpha} f\(x\)+\phaseshift{-\alpha} f\(x\) + \phaseshift{\alpha} f\(x\)-\phaseshift{-\alpha} f\(x\) / 2}
+                    &= {2\cos(\alpha)f\(x\) + 2\sin(\alpha) \phaseshift{\pi/2} f\(x\) / 2}
+                    &= \cos(\alpha)f\(x\) + \sin(\alpha) \phaseshift{\pi/2} f\(x\)
                 \end{aligned}
             </katex-area>
             <br/>
@@ -244,18 +244,18 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Lemma:</b></span>
-                <small><katex-area>\overset{\pi/2}{\mathrm{P}}f\(x\) = -\overset{-{\pi/2}}{\mathrm{P}}f\(x\)</katex-area></small>
+                <small><katex-area>\phaseshift{\pi/2} f\(x\) = -\phaseshift{-{\pi/2}} f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\) &= {\sin(\alpha)/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
+                    \sin(\alpha) \phaseshift{\pi/2} f\(x\) &= {\sin(\alpha)/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
                     &= -{\sin(\alpha)/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}e^{-i\pi}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}e^{i\pi}\,d\xi)
                     &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi){\pi/2}}e^{i\,\mathrm{sgn}(\xi)\pi}\,d\xi
                     &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi)({\pi/2}-\pi)}\,d\xi
                     &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi)(-{\pi/2})}\,d\xi
-                    \sin(\alpha) \overset{\pi/2}{\mathrm{P}}f\(x\) &= -\sin(\alpha) \overset{-{\pi/2}}{\mathrm{P}}f\(x\)
-                    \overset{\pi/2}{\mathrm{P}}f\(x\) &= -\overset{-{\pi/2}}{\mathrm{P}}f\(x\)
+                    \sin(\alpha) \phaseshift{\pi/2} f\(x\) &= -\sin(\alpha) \phaseshift{-{\pi/2}} f\(x\)
+                    \phaseshift{\pi/2} f\(x\) &= -\phaseshift{-{\pi/2}} f\(x\)
                 \end{aligned}
             </katex-area>
             <br/>
@@ -266,18 +266,18 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Linearity of Composition:</b></span>
-                <small><katex-area>\overset{\alpha}{\mathrm{P}} \overset{\beta}{\mathrm{P}}f\(x\) = \overset{\alpha+\beta}{\mathrm{P}}\!f\(x\)</katex-area></small>
+                <small><katex-area>\phaseshift{\alpha}  \phaseshift{\beta} f\(x\) = \phaseshift{\alpha+\beta} \!f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \overset{\alpha}{\mathrm{P}} \overset{\beta}{\mathrm{P}}f\(x\) &= \cos(\alpha)\overset{\beta}{\mathrm{P}}f\(x\) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}\overset{\beta}{\mathrm{P}}f\(x\)
-                    &= \cos\(\alpha\)\!(\cos\(\beta\)f\(x\)+\sin(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)) + \sin(\alpha) \overset{\pi/2}{\mathrm{P}}\!(\cos(\beta)f\(x\)-\sin(\beta)\overset{-{\pi/2}}{\mathrm{P}}\!f\(x\))
-                    &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\) + \sin(\alpha)\cos(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)-\sin(\alpha)\sin(\beta)\overset{\pi/2}{\mathrm{P}}\overset{-{\pi/2}}{\mathrm{P}}\!f\(x\)
-                    &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\) + \sin(\alpha)\cos(\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)-\sin(\alpha)\sin\(\beta\)f\(x\)
-                    &= \Big\(\!\cos(\alpha)\cos\(\beta\)-\sin(\alpha)\sin\(\beta\)\Big\)f\(x\) + \Big\(\!\cos\(\alpha\)\sin\(\beta\)+\sin\(\alpha\)\cos\(\beta\)\Big\)\overset{\pi/2}{\mathrm{P}}f\(x\)
-                    &\overset{\!\!\!\ast^1\ast^2\!\!\!}= \cos(\alpha+\beta)f\(x\) + \sin(\alpha+\beta)\overset{\pi/2}{\mathrm{P}}f\(x\)
-                    &= \overset{\alpha+\beta}{\mathrm{P}}\!f\(x\)
+                    \phaseshift{\alpha}  \phaseshift{\beta} f\(x\) &= \cos(\alpha)\phaseshift{\beta} f\(x\) + \sin(\alpha) \phaseshift{\pi/2} \phaseshift{\beta} f\(x\)
+                    &= \cos\(\alpha\)\!(\cos\(\beta\)f\(x\)+\sin(\beta)\phaseshift{\pi/2} f\(x\)) + \sin(\alpha) \phaseshift{\pi/2} \!(\cos(\beta)f\(x\)-\sin(\beta)\phaseshift{-{\pi/2}} \!f\(x\))
+                    &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\phaseshift{\pi/2} f\(x\) + \sin(\alpha)\cos(\beta)\phaseshift{\pi/2} f\(x\)-\sin(\alpha)\sin(\beta)\phaseshift{\pi/2} \phaseshift{-{\pi/2}} \!f\(x\)
+                    &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\phaseshift{\pi/2} f\(x\) + \sin(\alpha)\cos(\beta)\phaseshift{\pi/2} f\(x\)-\sin(\alpha)\sin\(\beta\)f\(x\)
+                    &= \Big\(\!\cos(\alpha)\cos\(\beta\)-\sin(\alpha)\sin\(\beta\)\Big\)f\(x\) + \Big\(\!\cos\(\alpha\)\sin\(\beta\)+\sin\(\alpha\)\cos\(\beta\)\Big\)\phaseshift{\pi/2} f\(x\)
+                    &\overset{\!\!\!\ast^1\ast^2\!\!\!}= \cos(\alpha+\beta)f\(x\) + \sin(\alpha+\beta)\phaseshift{\pi/2} f\(x\)
+                    &= \phaseshift{\alpha+\beta} \!f\(x\)
                 \end{aligned}
             </katex-area>
             <br/>
