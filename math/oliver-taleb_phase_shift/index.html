@@ -48,9 +48,9 @@
         <!-- definition -->
         <h2 class="definition-header"><i><b-heavy>Definition</b-heavy></i></h2>
         <div class="bottom-padding">
-            <div class="bottom-padding"><katex-area class="definition">\phaseshift\alpha f(x) = {1/2\pi} \int_{-\infty}^\infty\!\hat f(\xi) e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi</katex-area></div>
+            <div class="bottom-padding"><katex-area class="definition">\phaseshift\alpha f(x) = {1/2\pi} \int_{-\infty}^\infty\!\hat f(\xi) e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}\,d\xi</katex-area></div>
             <div class="bottom-padding"><small><katex-area>\hat f(\xi) =\int_{-\infty}^{\infty}\!f(t) e^{-i\xi t}\,dt</katex-area></small></div>
-            <div class="bottom-padding"><small><katex-area>\mathrm{sgn}\(x\)=\begin{cases}-1&\text{if }x\lt0\\\ \,0&\text{if }x=0\\\ \,1&\text{if }x\gt0\end{cases}</katex-area></small></div>
+            <div class="bottom-padding"><small><katex-area>\sgn\(x\)=\begin{cases}-1&\text{if }x\lt0\\\ \,0&\text{if }x=0\\\ \,1&\text{if }x\gt0\end{cases}</katex-area></small></div>
         </div>
         
         <!-- properties section -->
@@ -64,9 +64,9 @@
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\alpha ({f+g})(x) &\overset{\*^1}= {1/2\pi} \int_{-\infty}^\infty\!(\hat f\(\xi\)+\hat g\(\xi\))e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}+\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi+{1/2\pi} \int_{-\infty}^\infty\!\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    \phaseshift\alpha ({f+g})(x) &\overset{\*^1}= {1/2\pi} \int_{-\infty}^\infty\!(\hat f\(\xi\)+\hat g\(\xi\))e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}\,d\xi
+                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}+\hat g\(\xi\)\ e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}\,d\xi
+                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}\,d\xi+{1/2\pi} \int_{-\infty}^\infty\!\hat g\(\xi\)\ e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}\,d\xi
                     &= \phaseshift\alpha f(x)+\phaseshift\alpha g(x)
                 \end{aligned}
             </katex-area>
@@ -86,8 +86,8 @@
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\alpha c*\!f\(x\) &\overset{\*^1}= {1/2\pi} \int_{-\infty}^\infty\!c*\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= c*{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    \phaseshift\alpha c*\!f\(x\) &\overset{\*^1}= {1/2\pi} \int_{-\infty}^\infty\!c*\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}\,d\xi
+                    &= c*{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\alpha}\,d\xi
                     &= c*\phaseshift\alpha f\(x\)
                 \end{aligned}
             </katex-area>
@@ -107,7 +107,7 @@
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\pi f\(x\) &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\pi}\,d\xi
+                    \phaseshift\pi f\(x\) &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\pi}\,d\xi
                     &= {1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}e^{i\pi}\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\pi}\,d\xi)
                     &= {1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}(-1)\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}(-1)\,d\xi)
                     &= -{1/2\pi}(\int_{-\infty}^0\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi + \int_0^\infty\!\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
@@ -128,13 +128,13 @@
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\alpha f &= x\mapsto\FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \zeta\mapsto\FT\bigg\(x\mapsto\FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \xi\mapsto\FT f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}*e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha)}
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT f\(\xi\)
-                    y\mapsto\FT ^{-1}\bigg\(\zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\FT ^{-1}\big\(\xi\mapsto\FT f\(\xi\)\big\)\(y\)
-                    x\mapsto\FT ^{-1}\bigg\(\xi\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
+                    \phaseshift\alpha f &= x\mapsto\FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}\Big\)\(x\)
+                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \zeta\mapsto\FT\bigg\(x\mapsto\FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
+                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}
+                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\sgn\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}*e^{-i\sgn\(\xi\)\(-\alpha)}
+                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\sgn\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT f\(\xi\)
+                    y\mapsto\FT ^{-1}\bigg\(\zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\sgn\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\FT ^{-1}\big\(\xi\mapsto\FT f\(\xi\)\big\)\(y\)
+                    x\mapsto\FT ^{-1}\bigg\(\xi\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\xi\)*e^{-i\sgn\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
                     \phaseshift{-\alpha} \Big\(\phaseshift\alpha f\Big\) &= f\qquad\text{let }\beta=-\alpha
                     \phaseshift{-\beta} \Big\(\phaseshift{\beta} f\Big\) &= f
                     \phaseshift{-\(-\alpha\)} \Big\(\phaseshift{-\alpha} f\Big\) &= f
@@ -155,7 +155,7 @@
             <div><small><i><b>Proof:</b> Loïc</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\alpha f\(x) &= {1/2\pi}\int_{\R}\hat f\(\xi\) \ e^{-i\,\mathrm{sgn}\(\xi\)\alpha} e^{i\xi x} \ d\xi
+                    \phaseshift\alpha f\(x) &= {1/2\pi}\int_{-\infty}^{\infty}\hat f\(\xi\) \ e^{-i\sgn\(\xi\)\alpha} e^{i\xi x} \ d\xi
                     &= {1/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\alpha}e^{i\xi x} \ d\xi+\!\int_0^\infty\hat f\(\xi\) \ e^{-i\alpha}e^{i\xi x} \ d\xi)
                     &= {1/2\pi}\!(e^{i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{-i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                 \end{aligned}
@@ -181,7 +181,7 @@
                     & \ \ \ \ \ + {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {1/2\pi}\!((e^{i\alpha}\!+\!e^{-i\alpha})\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+(e^{i\alpha}\!+\!e^{-i\alpha})\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {e^{i\alpha}+e^{-i\alpha}/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
-                    &\overset{\*^1}= {\cos(\alpha)/\pi}\int_{\R}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
+                    &\overset{\*^1}= {\cos(\alpha)/\pi}\int_{-\infty}^{\infty}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
                     &= 2\cos(\alpha)f\(x)
                 \end{aligned}
             </katex-area>
@@ -209,7 +209,7 @@
                     &= {e^{i\alpha}-e^{-i\alpha}/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
                     &\overset{\*^1}= {i\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
                     &= {\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
-                    &= {\sin(\alpha)/\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi){\pi/2}}\,d\xi
+                    &= {\sin(\alpha)/\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\){\pi/2}}\,d\xi
                     &= 2\sin(\alpha) \phaseshift{\pi/2} f\(x\)
                 \end{aligned}
             </katex-area>
@@ -251,9 +251,9 @@
                 \begin{aligned}
                     \sin(\alpha) \phaseshift{\pi/2} f\(x\) &= {\sin(\alpha)/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
                     &= -{\sin(\alpha)/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}e^{-i\pi}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}e^{i\pi}\,d\xi)
-                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi){\pi/2}}e^{i\,\mathrm{sgn}(\xi)\pi}\,d\xi
-                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi)({\pi/2}-\pi)}\,d\xi
-                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi)(-{\pi/2})}\,d\xi
+                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\){\pi/2}}e^{i\sgn\(\xi\)\pi}\,d\xi
+                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\,({\pi/2}-\pi)}\,d\xi
+                    &= -{\sin(\alpha)/2\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\,(-{\pi/2})}\,d\xi
                     \sin(\alpha) \phaseshift{\pi/2} f\(x\) &= -\sin(\alpha) \phaseshift{-{\pi/2}} f\(x\)
                     \phaseshift{\pi/2} f\(x\) &= -\phaseshift{-{\pi/2}} f\(x\)
                 \end{aligned}
