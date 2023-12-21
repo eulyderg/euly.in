@@ -100,7 +100,7 @@
                 value = XRegExp.replace( value, /\<\=/g, "\\le " );
                 value = XRegExp.replace( value, /\*\*/g, "*" );
                 
-                katex.render( value, element, { throwOnError:false, displayMode:true, fleqn:true, macros } );
+                katex.render( value, math, { throwOnError:false, displayMode:true, fleqn:true, macros } );
                 math.style.display = "inline-block";
                 math.style.padding = "16px";
                 while (output.firstChild) {
