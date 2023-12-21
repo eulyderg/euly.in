@@ -10,5 +10,4 @@ details > summary {
     min-width: fit-content;
 }
 details > summary::marker, details > summary::-webkit-details-marker { display: none; }
-
 details, print-group { break-inside: avoid; }

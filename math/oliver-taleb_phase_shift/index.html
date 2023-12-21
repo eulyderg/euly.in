@@ -52,9 +52,38 @@
             <div class="bottom-padding"><small><katex-area>\hat f(\xi) =\int_{-\infty}^{\infty}\!f(t) e^{-i\xi t}\,dt</katex-area></small></div>
             <div class="bottom-padding"><small><katex-area>\sgn\(x\)=\begin{cases}-1&\text{if }x\lt0\\\ \,0&\text{if }x=0\\\ \,1&\text{if }x\gt0\end{cases}</katex-area></small></div>
         </div>
+        <h2 class="definition-alt-header"><i><b-heavy>Alt Definition</b-heavy></i></h2>
+        <div class="bottom-padding">
+            <div class="bottom-padding"><small><katex-area class="definition-alt">\phaseshift{\alpha}f = \FT^{-1}(\xi\mapsto\FT\!f(\xi)e^{-i\sgn\(\xi\)\alpha})</katex-area></small></div>
+            <div class="bottom-padding"><small><small><katex-area>\FT(f)(\xi) = \int_{-\infty}^{\infty}\!f(x) e^{-i\xi x}\,dx</katex-area></small></small></div>
+            <div class="bottom-padding"><small><small><katex-area>\FT^{-1}(f)(x) = {1/2\pi}\int_{-\infty}^{\infty}\!f(\xi) e^{i\xi x}\,d\xi</katex-area></small></small></div>
+            <div class="bottom-padding"><small><small><katex-area>\sgn\(x\)=\begin{cases}-1&\text{if }x\lt0\\\ \,0&\text{if }x=0\\\ \,1&\text{if }x\gt0\end{cases}</katex-area></small></small></div>
+        </div>
         
         <!-- properties section -->
         <h2><i><b-heavy>Properties</b-heavy></i></h2>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Identity:</b></span>
+                <small><katex-area>\phaseshift{2\pi n} f(x) = f(x)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \phaseshift{2\pi n} f(x) &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)\,2\pi n}\,d\xi
+                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)}(e^{2\pi})^n\,d\xi
+                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)}(1)^n\,d\xi
+                    &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\sgn\(\xi\)}\,d\xi
+                    &= f(x)
+                \end{aligned}
+                {}
+                n\in\Z
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
         
         <details>
             <summary>
@@ -101,6 +130,53 @@
         
         <details>
             <summary>
+                <span class="summary-caption"><b>Linearity of Composition:</b></span>
+                <small><katex-area>\phaseshift{\alpha} \phaseshift{\beta} f\(x\) = \phaseshift{\alpha+\beta} \!f\(x\)</katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \phaseshift{\alpha}\phaseshift{\beta}f &= \FT^{-1}(\xi\mapsto\FT\Big\(\phaseshift{\beta}f\Big\)(\xi)*e^{-i\sgn\(\xi\)\alpha})
+                    &= \FT^{-1}(\xi\mapsto\FT\FT^{-1}(\zeta\mapsto\FT(f)*e^{-i\sgn\(\zeta\)\beta})(\xi)*e^{-i\sgn\(\xi\)\alpha})
+                    &= \FT^{-1}(\xi\mapsto\FT(f)*e^{-i\sgn\(\xi\)\beta}*e^{-i\sgn\(\xi\)\alpha})
+                    &= \FT^{-1}(\xi\mapsto\FT(f)*e^{-i\sgn\(\xi\)\beta-i\sgn\(\xi\)\alpha})
+                    &= \FT^{-1}(\xi\mapsto\FT(f)*e^{-i\sgn\(\xi\)\(\alpha+\beta\)})
+                    &= \phaseshift{\alpha+\beta}f
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
+                <span class="summary-caption"><b>Inverse:</b></span>
+                <small><katex-area>\phaseshift\alpha {}^{-1}=\phaseshift{-\alpha} </katex-area></small>
+            </summary>
+            <div><small><i><b>Proof:</b> Euly</i></small></div>
+            <katex-area indent>
+                \begin{aligned}
+                    \phaseshift\alpha f &= \FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}\Big\)
+                    \FT\Big\(\phaseshift\alpha f\Big\) &= \FT\FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}\Big\)
+                    \FT\Big\(\phaseshift\alpha f\Big\) &= \xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}
+                    \xi\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\xi\)*e^{-i\sgn\(\xi\)\(-\alpha\)} &= \xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}*e^{-i\sgn\(\xi\)\(-\alpha)}
+                    \xi\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\xi\)*e^{-i\sgn\(\xi\)\(-\alpha\)} &= \FT f
+                    \FT ^{-1}\bigg\(\xi\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\xi\)*e^{-i\sgn\(\xi\)\(-\alpha\)}\!\bigg\) &= \FT ^{-1}\FT f
+                    \phaseshift{-\alpha} \Big\(\phaseshift\alpha f\Big\) &= f\qquad\text{let }\beta=-\alpha
+                    \phaseshift{-\beta} \Big\(\phaseshift{\beta} f\Big\) &= f
+                    \phaseshift{-\(-\alpha\)} \Big\(\phaseshift{-\alpha} f\Big\) &= f
+                    \phaseshift{\alpha} \Big\(\phaseshift{-\alpha} f\Big\) &= f
+                    \phaseshift{-\alpha}  &= \phaseshift\alpha {}^{-1}
+                \end{aligned}
+            </katex-area>
+            <br/>
+            <br/>
+            <br/>
+        </details>
+        
+        <details>
+            <summary>
                 <span class="summary-caption"><b>Identity:</b></span>
                 <small><katex-area>\phaseshift{\pi} f\(x)=-f\(x)</katex-area></small>
             </summary>
@@ -119,34 +195,7 @@
             <br/>
             <br/>
         </details>
-        
-        <details>
-            <summary>
-                <span class="summary-caption"><b>Inverse:</b></span>
-                <small><katex-area>\phaseshift\alpha {}^{-1}=\phaseshift{-\alpha} </katex-area></small>
-            </summary>
-            <div><small><i><b>Proof:</b> Euly</i></small></div>
-            <katex-area indent>
-                \begin{aligned}
-                    \phaseshift\alpha f &= x\mapsto\FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}\Big\)\(x\)
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \zeta\mapsto\FT\bigg\(x\mapsto\FT ^{-1}\Big\(\xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\sgn\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT f\(\xi\)*e^{-i\sgn\(\xi\)\alpha}*e^{-i\sgn\(\xi\)\(-\alpha)}
-                    \zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\sgn\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT f\(\xi\)
-                    y\mapsto\FT ^{-1}\bigg\(\zeta\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\sgn\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\FT ^{-1}\big\(\xi\mapsto\FT f\(\xi\)\big\)\(y\)
-                    x\mapsto\FT ^{-1}\bigg\(\xi\mapsto\FT\Big\(\phaseshift\alpha f\Big\)\(\xi\)*e^{-i\sgn\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
-                    \phaseshift{-\alpha} \Big\(\phaseshift\alpha f\Big\) &= f\qquad\text{let }\beta=-\alpha
-                    \phaseshift{-\beta} \Big\(\phaseshift{\beta} f\Big\) &= f
-                    \phaseshift{-\(-\alpha\)} \Big\(\phaseshift{-\alpha} f\Big\) &= f
-                    \phaseshift{\alpha} \Big\(\phaseshift{-\alpha} f\Big\) &= f
-                    \phaseshift{-\alpha}  &= \phaseshift\alpha {}^{-1}
-                \end{aligned}
-            </katex-area>
-            <br/>
-            <br/>
-            <br/>
-        </details>
-        
+            
         <details>
             <summary>
                 <span class="summary-caption"><b>Lemma:</b></span>
@@ -266,7 +315,7 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Linearity of Composition:</b></span>
-                <small><katex-area>\phaseshift{\alpha}  \phaseshift{\beta} f\(x\) = \phaseshift{\alpha+\beta} \!f\(x\)</katex-area></small>
+                <small><katex-area>\phaseshift{\alpha} \phaseshift{\beta} f\(x\) = \phaseshift{\alpha+\beta} \!f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
