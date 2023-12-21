@@ -32,6 +32,7 @@ const macros = {
     "\\)": ")",
     "\\[": "[",
     "\\]": "]",
+    "\\*": "\\ast",
     "/": "\\over",
     "\\f": "\\operatorname{f}",
     "\\union": "\\cup",
@@ -64,6 +65,7 @@ for ( var element of katex_areas ) {
     value = XRegExp.replace( value, /\!\=/g, "\\ne " );
     value = XRegExp.replace( value, /\<\=/g, "\\le " );
     value = XRegExp.replace( value, /&amp;/g, "&" );
+    value = XRegExp.replace( value, /\\{0}\*/g, "\\cdot" );
     
     katex.render( value, element, { throwOnError:false, displayMode:true, fleqn:true, macros } );
 }
