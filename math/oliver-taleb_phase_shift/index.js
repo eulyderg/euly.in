@@ -47,7 +47,9 @@ const macros = {
     "\\bmat": "\\begin{bmatrix}#1\\end{bmatrix}",
     "\\Bmat": "\\begin{Bmatrix}#1\\end{Bmatrix}",
     "\\vmat": "\\begin{vmatrix}#1\\end{vmatrix}",
-    "\\Vmat": "\\begin{Vmatrix}#1\\end{Vmatrix}"
+    "\\Vmat": "\\begin{Vmatrix}#1\\end{Vmatrix}",
+    "\\phaseshift": "\\overset{#1}{\\rm{P}}",
+    "\\FT": "{\cal F}"
 };
 
 var katex_areas = document.getElementsByTagName("katex-area");
@@ -58,6 +60,9 @@ for ( var element of katex_areas ) {
     value = substituteBrackets( value, [[ "\\(", "\\!\\left(" ], [ "\\)", "\\right)" ]] );
     value = XRegExp.replace( value, /[\r\n](?=.)/g, "\\\\" );
     value = XRegExp.replace( value, /[\r\n]/g, "\\\\\\\n" );
+    value = XRegExp.replace( value, /\>\=/g, "\\ge " );
+    value = XRegExp.replace( value, /\!\=/g, "\\ne " );
+    value = XRegExp.replace( value, /\<\=/g, "\\le " );
     value = XRegExp.replace( value, /&amp;/g, "&" );
     
     katex.render( value, element, { throwOnError:false, displayMode:true, fleqn:true, macros } );

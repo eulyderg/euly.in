@@ -71,11 +71,9 @@
                 "\\[": "[",
                 "\\]": "]",
                 "/": "\\over",
-                "*": "\\cdot",
                 "\\f": "\\operatorname{f}",
                 "\\union": "\\cup",
                 "\\intersection": "\\cap",
-                //"\\iteral": "\\underset{\\raisebox{-0.11em}{$\\scriptsize{#1}$}}{\\overset{\\raisebox{0.1em}{$\\scriptsize{#2}$}}{\\raisebox{-0.44em}{\\huge\u0418}}}",
                 "\\matrix": "\\begin{matrix}#1\\end{matrix}",
                 "\\pmatrix": "\\begin{pmatrix}#1\\end{pmatrix}",
                 "\\bmatrix": "\\begin{bmatrix}#1\\end{bmatrix}",
@@ -88,27 +86,21 @@
                 "\\Bmat": "\\begin{Bmatrix}#1\\end{Bmatrix}",
                 "\\vmat": "\\begin{vmatrix}#1\\end{vmatrix}",
                 "\\Vmat": "\\begin{Vmatrix}#1\\end{Vmatrix}",
+                "\\phaseshift": "\\overset{#1}{\\rm{P}}",
+                "\\FT": "{\cal F}"
             };
-            const funcs = ["arcsin","arccos","arctan","arctg","arcctg","arg","ch","cos","det","gcd","cosec","cosh","cot","cotg","coth","csc","ctg","cth","max","deg","dim","exp","hom","ker","lg","ln","log","min","plim","Pr","sup","sec","sin","sinh","sh","tan","tanh","tg","th"];
             function updateImage() {
                 var value = input.value;
                 
-                value = substituteBrackets(value,[["\\(","\\left("],["\\)","\\right)"]]);
-                value = substituteBrackets(value,[["\\[","\\left["],["\\]","\\right]"]]);
-                value = substituteBrackets(value,[["\\|{","\\left|"],["}\\|","\\right|"]]);
-                for (var i=0;i<funcs.length;i++) {
-                    value = XRegExp.replace(value, RegExp("\\\\"+funcs[i]+"\\\\left","g"), "\\"+funcs[i]+"\\!\\left");
-                    //value = XRegExp.replace(value, RegExp("\\b(?<!\\\\)"+funcs[i]+"(?!\\\\!)","g"), "\\"+funcs[i]);
-                }
-                value = XRegExp.replace(value, /[\r\n](?=.)/g, "\\\\");
-                value = XRegExp.replace(value, /[\r\n]/g, "\\\\\\\n");
-                value = XRegExp.replace(value, /\ (?=(\ )+?)/g, "\\ ");
-                value = XRegExp.replace(value, /\>\=/g, "\\ge ");
-                value = XRegExp.replace(value, /\!\=/g, "\\ne ");
-                value = XRegExp.replace(value, /\<\=/g, "\\le ");
-                value = XRegExp.replace( value, /\\\*/g, "*" );
+                value = substituteBrackets( value, [[ "\\(", "\\!\\left(" ], [ "\\)", "\\right)" ]] );
+                value = XRegExp.replace( value, /[\r\n](?=.)/g, "\\\\" );
+                value = XRegExp.replace( value, /[\r\n]/g, "\\\\\\\n" );
+                value = XRegExp.replace( value, /\>\=/g, "\\ge " );
+                value = XRegExp.replace( value, /\!\=/g, "\\ne " );
+                value = XRegExp.replace( value, /\<\=/g, "\\le " );
+                value = XRegExp.replace( value, /\*\*/g, "*" );
                 
-                katex.render(value, math, {throwOnError:false, displayMode:true, fleqn:true, macros});
+                katex.render( value, element, { throwOnError:false, displayMode:true, fleqn:true, macros } );
                 math.style.display = "inline-block";
                 math.style.padding = "16px";
                 while (output.firstChild) {
