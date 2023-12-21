@@ -64,7 +64,7 @@
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\alpha ({f+g})(x) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!(\hat f\(\xi\)+\hat g\(\xi\))e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    \phaseshift\alpha ({f+g})(x) &\overset{\*^1}= {1/2\pi} \int_{-\infty}^\infty\!(\hat f\(\xi\)+\hat g\(\xi\))e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
                     &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}+\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
                     &= {1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi+{1/2\pi} \int_{-\infty}^\infty\!\hat g\(\xi\)\ e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
                     &= \phaseshift\alpha f(x)+\phaseshift\alpha g(x)
@@ -73,7 +73,7 @@
             <br/>
             <br/>
             <div class="footnote">
-                <katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i>
+                <katex-area>\*^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i>
             </div>
             <br/>
         </details>
@@ -81,20 +81,20 @@
         <details>
             <summary>
                 <span class="summary-caption"><b>Homogeneity:</b></span>
-                <small><katex-area>\phaseshift\alpha c\cdot\!f\(x\) = c\cdot\phaseshift\alpha f\(x\)</katex-area></small>
+                <small><katex-area>\phaseshift\alpha c*\!f\(x\) = c*\phaseshift\alpha f\(x\)</katex-area></small>
             </summary>
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\alpha c\cdot\!f\(x\) &\overset{\ast^1}= {1/2\pi} \int_{-\infty}^\infty\!c\cdot\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= c\cdot{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
-                    &= c\cdot\phaseshift\alpha f\(x\)
+                    \phaseshift\alpha c*\!f\(x\) &\overset{\*^1}= {1/2\pi} \int_{-\infty}^\infty\!c*\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= c*{1/2\pi} \int_{-\infty}^\infty\!\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\,d\xi
+                    &= c*\phaseshift\alpha f\(x\)
                 \end{aligned}
             </katex-area>
             <br/>
             <br/>
             <div class="footnote">
-                <katex-area>\ast^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i>
+                <katex-area>\*^1\ \ </katex-area><i>Implied by linearity of Fourier transform.</i>
             </div>
             <br/>
         </details>
@@ -128,13 +128,13 @@
             <div><small><i><b>Proof:</b> Euly</i></small></div>
             <katex-area indent>
                 \begin{aligned}
-                    \phaseshift\alpha f &= x\mapsto\FT  ^{-1}\Big\(\xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)
-                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \zeta\mapsto\FT  \bigg\(x\mapsto\FT  ^{-1}\Big\(\xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
-                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}
-                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT  f\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha)}
-                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT  f\(\xi\)
-                    y\mapsto\FT  ^{-1}\bigg\(\zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)\cdot e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\FT  ^{-1}\big\(\xi\mapsto\FT  f\(\xi\)\big\)\(y\)
-                    x\mapsto\FT  ^{-1}\bigg\(\xi\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\xi\)\cdot e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
+                    \phaseshift\alpha f &= x\mapsto\FT  ^{-1}\Big\(\xi\mapsto\FT  f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \zeta\mapsto\FT  \bigg\(x\mapsto\FT  ^{-1}\Big\(\xi\mapsto\FT  f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}\Big\)\(x\)\!\bigg\)\!(\zeta)
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\) &= \xi\mapsto\FT  f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT  f\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\alpha}*e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha)}
+                    \zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)} &= \xi\mapsto\FT  f\(\xi\)
+                    y\mapsto\FT  ^{-1}\bigg\(\zeta\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\zeta\)*e^{-i\,\mathrm{sgn}\(\zeta\)\(-\alpha\)}\!\bigg\)\(y\) &= y\mapsto\FT  ^{-1}\big\(\xi\mapsto\FT  f\(\xi\)\big\)\(y\)
+                    x\mapsto\FT  ^{-1}\bigg\(\xi\mapsto\FT  \Big\(\phaseshift\alpha f\Big\)\(\xi\)*e^{-i\,\mathrm{sgn}\(\xi\)\(-\alpha\)}\!\bigg\)\(x\) &= f
                     \phaseshift{-\alpha} \Big\(\phaseshift\alpha f\Big\) &= f\qquad\text{let }\beta=-\alpha
                     \phaseshift{-\beta} \Big\(\phaseshift{\beta} f\Big\) &= f
                     \phaseshift{-\(-\alpha\)} \Big\(\phaseshift{-\alpha} f\Big\) &= f
@@ -181,14 +181,14 @@
                     & \ \ \ \ \ + {1/2\pi}\!(e^{-i\alpha}\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+e^{i\alpha}\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {1/2\pi}\!((e^{i\alpha}\!+\!e^{-i\alpha})\!\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+(e^{i\alpha}\!+\!e^{-i\alpha})\!\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
                     &= {e^{i\alpha}+e^{-i\alpha}/2\pi}\!(\int_{-\infty}^0\hat f\(\xi\) \ e^{i\xi x} \ d\xi+\int_0^\infty\hat f\(\xi\) \ e^{i\xi x} \ d\xi)
-                    &\overset{\ast^1}= {\cos(\alpha)/\pi}\int_{\R}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
+                    &\overset{\*^1}= {\cos(\alpha)/\pi}\int_{\R}\hat f\(\xi\) \ e^{i\xi x} \ d\xi
                     &= 2\cos(\alpha)f\(x)
                 \end{aligned}
             </katex-area>
             <br/>
             <br/>
             <div class="footnote">
-                <katex-area>\ast^1\ \ </katex-area><i>Identity: </i><small><small><katex-area>{e^{i\alpha}+e^{-i\alpha}/2}=\cos(\alpha)</katex-area></small></small>
+                <katex-area>\*^1\ \ </katex-area><i>Identity: </i><small><small><katex-area>{e^{i\alpha}+e^{-i\alpha}/2}=\cos(\alpha)</katex-area></small></small>
             </div>
             <br/>
         </details>
@@ -207,7 +207,7 @@
                 \begin{aligned}
                     \phaseshift{\alpha} f\(x\)-\phaseshift{-\alpha} f\(x\) &= {1/2\pi} \! ((e^{i\alpha}-e^{-i\alpha})\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi + (e^{-i\alpha}-e^{i\alpha})\int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
                     &= {e^{i\alpha}-e^{-i\alpha}/2\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
-                    &\overset{\ast^1}= {i\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
+                    &\overset{\*^1}= {i\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}\,d\xi - \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}\,d\xi)
                     &= {\sin(\alpha)/\pi} \! (\int_{-\infty}^{0}\hat f\(\xi\)\,e^{i\xi x}e^{i{\pi/2}}\,d\xi + \int_{0}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i{\pi/2}}\,d\xi)
                     &= {\sin(\alpha)/\pi} \int_{-\infty}^{\infty}\hat f\(\xi\)\,e^{i\xi x}e^{-i\,\mathrm{sgn}(\xi){\pi/2}}\,d\xi
                     &= 2\sin(\alpha) \phaseshift{\pi/2} f\(x\)
@@ -216,7 +216,7 @@
             <br/>
             <br/>
             <div class="footnote">
-                <katex-area>\ast^1\ \ </katex-area><i>Identity: </i><small><small><katex-area>{e^{i\alpha}-e^{-i\alpha}/2}=i\sin(\alpha)</katex-area></small></small>
+                <katex-area>\*^1\ \ </katex-area><i>Identity: </i><small><small><katex-area>{e^{i\alpha}-e^{-i\alpha}/2}=i\sin(\alpha)</katex-area></small></small>
             </div>
             <br/>
         </details>
@@ -276,15 +276,15 @@
                     &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\phaseshift{\pi/2} f\(x\) + \sin(\alpha)\cos(\beta)\phaseshift{\pi/2} f\(x\)-\sin(\alpha)\sin(\beta)\phaseshift{\pi/2} \phaseshift{-{\pi/2}} \!f\(x\)
                     &= \cos(\alpha)\cos\(\beta\)f\(x\)+\cos(\alpha)\sin(\beta)\phaseshift{\pi/2} f\(x\) + \sin(\alpha)\cos(\beta)\phaseshift{\pi/2} f\(x\)-\sin(\alpha)\sin\(\beta\)f\(x\)
                     &= \Big\(\!\cos(\alpha)\cos\(\beta\)-\sin(\alpha)\sin\(\beta\)\Big\)f\(x\) + \Big\(\!\cos\(\alpha\)\sin\(\beta\)+\sin\(\alpha\)\cos\(\beta\)\Big\)\phaseshift{\pi/2} f\(x\)
-                    &\overset{\!\!\!\ast^1\ast^2\!\!\!}= \cos(\alpha+\beta)f\(x\) + \sin(\alpha+\beta)\phaseshift{\pi/2} f\(x\)
+                    &\overset{\!\!\!\*^1\*^2\!\!\!}= \cos(\alpha+\beta)f\(x\) + \sin(\alpha+\beta)\phaseshift{\pi/2} f\(x\)
                     &= \phaseshift{\alpha+\beta} \!f\(x\)
                 \end{aligned}
             </katex-area>
             <br/>
             <br/>
             <div class="footnote">
-                <katex-area>\ast^1\ \ </katex-area><i>Identity: </i><small><katex-area>\cos(x)\cos(y)-\sin(x)\sin(y)=\cos(x+y)</katex-area></small><br/>
-                <katex-area>\ast^2\ \ </katex-area><i>Identity: </i><small><katex-area>\cos(x)\sin(y)+\sin(x)\cos(y)=\sin(x+y)</katex-area></small>
+                <katex-area>\*^1\ \ </katex-area><i>Identity: </i><small><katex-area>\cos(x)\cos(y)-\sin(x)\sin(y)=\cos(x+y)</katex-area></small><br/>
+                <katex-area>\*^2\ \ </katex-area><i>Identity: </i><small><katex-area>\cos(x)\sin(y)+\sin(x)\cos(y)=\sin(x+y)</katex-area></small>
             </div>
             <br/>
         </details>
