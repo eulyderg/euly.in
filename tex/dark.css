@@ -1,0 +1,19 @@
+/* dark theme stylesheet */
+
+body {
+    background-color:   #111;
+    color:              #EEE;
+}
+
+textarea {
+    background-color:   #222;
+    color:              #DDD;
+    border-color:       #666666;
+    
+    box-shadow:         1px 1px 1px #282828;
+    filter:             drop-shadow(0px 0px 4px #DDDDDD10);
+}
+
+katex-output {
+    filter:         drop-shadow(0px 0px 4px #DDDDDD10);
+}
