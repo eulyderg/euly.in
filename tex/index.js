@@ -74,9 +74,13 @@ const macros = {
     "\\Bmat":           "\\begin{Bmatrix}#1\\end{Bmatrix}",
     "\\vmat":           "\\begin{vmatrix}#1\\end{vmatrix}",
     "\\Vmat":           "\\begin{Vmatrix}#1\\end{Vmatrix}",
+    "\\aligned":        "\\begin{aligned}#1\\end{aligned}",
     "\\phaseshift":     "\\overset{#1}{\\rm{P}}",
     "\\FT":             "{\\cal F}",
-    "\\sgn":            "\\operatorname{sgn}"
+    "\\sgn":            "\\operatorname{sgn}",
+    "\\ihat":           "\\hat\\imath",
+    "\\jhat":           "\\,\\hat{\\!\\jmath}",
+    "\\khat":           "\\hat{k}"
 };
 
 // updates the output display
