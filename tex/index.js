@@ -11,9 +11,6 @@ const textarea = document.querySelector("textarea");
 const mathContainer = document.querySelector("katex-output");
 const math = document.createElement("div");
 
-// enable textarea -- javascript is enabled!
-textarea.disabled = false;
-
 // set event listeners
 function UpdateTextbox() {
     textarea.style.height = "0px"; // to reset textarea.scrollHeight properly
@@ -74,9 +71,13 @@ const macros = {
     "\\Bmat":           "\\begin{Bmatrix}#1\\end{Bmatrix}",
     "\\vmat":           "\\begin{vmatrix}#1\\end{vmatrix}",
     "\\Vmat":           "\\begin{Vmatrix}#1\\end{Vmatrix}",
+    "\\aligned":        "\\begin{aligned}#1\\end{aligned}",
     "\\phaseshift":     "\\overset{#1}{\\rm{P}}",
     "\\FT":             "{\\cal F}",
-    "\\sgn":            "\\operatorname{sgn}"
+    "\\sgn":            "\\operatorname{sgn}",
+    "\\ihat":           "\\hat\\imath",
+    "\\jhat":           "\\,\\hat{\\!\\jmath}",
+    "\\khat":           "\\hat{k}"
 };
 
 // updates the output display
@@ -99,6 +100,6 @@ function UpdateMath() {
     while (mathContainer.firstChild) { mathContainer.removeChild(mathContainer.lastChild); }
     
     // fill output container with new contents
-    katex.render( input, math, { throwOnError:false, displayMode:true, macros } );
+    katex.render( input, math, { throwOnError:false, displayMode:true, fleqn:true, macros } );
     mathContainer.appendChild(math);
 }

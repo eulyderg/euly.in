@@ -44,3 +44,4 @@ katex-output:empty { display: none; }
 
 /* override katex default margin */
 .katex-display { margin: 0px; }
+.katex-display.fleqn > .katex { padding-left: 0em; }
