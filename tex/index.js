@@ -54,7 +54,6 @@ const macros = {
     "\\)":              ")",
     "\\[":              "[",
     "\\]":              "]",
-    "/":                "\\over",
     "\\f":              "\\operatorname{f}",
     "\\union":          "\\cup",
     "\\intersect":      "\\cap",
@@ -86,7 +85,7 @@ function UpdateMath() {
     var input = textarea.value;
     
     // preprocess the input tex
-    input = substituteBrackets( input, [[ "\\(", "\\!\\left(" ], [ "\\)", "\\right)" ]] );
+    input = substituteBrackets( input, [[ "\\(", "\\left(" ], [ "\\)", "\\right)" ]] );
     input = XRegExp.replace( input, /[\r\n](?=.)/g, "\\\\" );
     input = XRegExp.replace( input, /[\r\n]/g, "\\\\\\\n" );
     input = XRegExp.replace( input, /\>\=/g, "\\ge " );
@@ -100,6 +99,6 @@ function UpdateMath() {
     while (mathContainer.firstChild) { mathContainer.removeChild(mathContainer.lastChild); }
     
     // fill output container with new contents
-    katex.render( input, math, { throwOnError:false, displayMode:true, fleqn:true, macros } );
+    katex.render( input, math, { throwOnError:false, displayMode:true, fleqn:true, trust:true, macros } );
     mathContainer.appendChild(math);
 }
