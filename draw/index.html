@@ -170,29 +170,30 @@ function drawLine(x1,y1,x2,y2,size,color) {
 }
 var brushes = [drawInk,drawCircle,drawChisel,drawDither];
 
+var cWidth = innerWidth;//816;
+var cHeight = innerHeight*2;//1056;
+
 var filled = [];
-for (var i=0;i<1056;i++) {
+for (var i=0;i<cHeight;i++) {
   filled[i] = [];
-  for (var j=0;j<816;j++) {
+  for (var j=0;j<cWidth;j++) {
     filled[i][j] = false;
   }
 }
 
-var cWidth = innerWidth;//816;
-var cHeight = innerHeight;//1056;
 
 var ctx;
 var canvas;
 var drawing;
 var drawing2;
-function preload() {
-  //drawing = loadImage("img.png");
-}
+//function preload() {
+//  drawing = loadImage("_00.png");
+//}
 function setup() {
   canvas = createCanvas(cWidth, cHeight).elt;
   ctx = canvas.getContext("2d");
   background(255, 255, 255);
-  //image(drawing,100,0);
+  //image(drawing,300,100);
   createImageBitmap(canvas,0,0,cWidth,cHeight).then(function(data){
     undohistory[0]=data;
   });
