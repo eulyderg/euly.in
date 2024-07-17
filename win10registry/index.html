@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Win10 Registry List</title>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style>
+            /* format for lines of small text */
+            div.small { font-size: 0.8em; }
+            
+            /* indicate that you can click on <summary> */
+            summary { cursor: pointer; }
+        </style>
+    </head>
+    <body>
+        <h2>Euly's Windows 10 Registry Tweaks List</h2>
+        
+        <div>My personal list of all the shit you might want to change but was buried in the fucking registry for some reason.</div>
+        <div><a href="/">Back to Homepage</a></div>
+        
+        <br/>
+        <hr/>
+        
+        <h4>What the fuck is the registry?</h4>
+        <div>The <a href="https://en.wikipedia.org/wiki/Windows_Registry" target="_blank">windows registry</a> is sort of like a secondary filesystem, with folders and such.</div>
+        <div>The main difference is that rather than storing files in these folders, it stores short values of some type-- a number, a <a href="https://en.wikipedia.org/wiki/String_(computer_science)" target="_blank">string</a>, or something like that.</div>
+        <div><a href="https://en.wiktionary.org/wiki/cunt" target="_blank">Microsoft</a> likes to stuff whatever shit they don't want the average user to disable inside this.</div>
+        
+        <br/>
+        
+        <div>So, I'm writing my own list of important values that really feel like they should be in the settings page.</div>
+        
+        <br/>
+        
+        <div><u>All entries here will include a <code>.reg</code> file for download</u>, which you may simply double-click to install the desired effect.</div>
+        <div>If you don't already know what you're doing in the registry, this is likely safer for you than trying to dig around in it yourself.</div>
+        
+        <br/>
+        
+        <div class="small">More generally, don't click random shit on your computer if you don't know what it does.</div>
+        <div class="small">This is a complex machine that relies on many, many parts working <i>juuust</i> right, not a toaster oven.</div>
+        <div class="small">Look up how things work with your preferred search engine before playing with them.</div>
+        
+        <br/>
+        
+        <div>If you want to suggest an addition to this list, please contact me at <code>@eulyderg</code> on Discord.</div>
+        
+        <br/>
+        <hr/>
+        <br/>
+        
+        <details>
+        <summary><b>Remove the 3D Objects folder from the file explorer list</b></summary>
+        <div>Despite deleting this folder, which serves only as a place to put Microsoft 3D Paint files, the directory still shows up on the folder list.</div>
+        <div>Delete <code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}</code></div>
+        <div><a href="remove3dobjects.reg" download><code>remove3dobjects.reg</code></a></div>
+        <div>
+        </details>
+        <br/>
+        
+        <div>
+        
+    </body>
+</html>
