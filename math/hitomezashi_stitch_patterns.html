@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hitomezashi Stitch Patterns</title>
+        <meta charset="utf-8"/>
+        <style>
+            canvas { border: 2px outset black; }
+        </style>
+    </head>
+    <body>
+        <h3>Hitomezashi Stitch Patterns</h3>
+        <noscript>This page requires JavaScript to function.</noscript>
+        <div><a href="/">Back</a></div>
+        <div>
+            <input type="range" min="0" max="100" value="0" step="1" oninput="update(this.value/100); percentage.innerText=this.value;"/>
+            <span id="percentage">0</span>%
+        </div>
+        <canvas width="512" height="512" id="canvas"></canvas>
+        <script>
+            var percentage = document.getElementById("percentage");
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            
+            var grid = 8;
+            
+            var rows = Array(canvas.width / grid).fill().map(x=>Math.random());
+            var columns = Array(canvas.height / grid).fill().map(x=>Math.random());
+
+            var update = function(threshold) {
+                ctx.reset();
+                ctx.fillStyle = "#000000";
+                for (var i=0; i<rows.length; i++) {
+                    for (var j=0; j<columns.length; j++) {
+                        var evenColumn = !(j & 1);
+                        if ((rows[i]<threshold) == evenColumn) {ctx.fillRect(i*grid, j*grid, 2, grid+2);}
+                        var evenRow = !(i & 1);
+                        if ((rows[j]<threshold) == evenRow) {ctx.fillRect(i*grid, j*grid, grid+2, 2);}
+                    }
+                }
+            }
+            update(0);
+        </script>
+    </body>
+</html>
