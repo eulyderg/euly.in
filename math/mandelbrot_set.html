@@ -1,23 +1,53 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
     <head>
         <title>Mandelbrot Set</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" integrity="sha384-Juol1FqnotbkyZUT5Z7gUPjQ9gzlwCENvUZTpQBAPxtusdwFLRy382PSDx5UUJ4/" crossorigin="anonymous">
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js" integrity="sha384-97gW6UIJxnlKemYavrqDHSX3SiygeOwIZhwyOKRfSaf0JWKRVj9hLASHgFTzT+0O" crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
         <style>
-            body { background: #FFFFFF; }
             h3 { margin: 0px; }
-            .math { display: inline-block; }
+            math { math-style: normal; }
         </style>
     </head>
     <body>
         <h3>Mandelbrot Set</h3>
         <noscript>This page requires JavaScript to function.</noscript>
         <div><a href="/">Back</a></div>
-        <div class="math">$$\begin{align*}&z_0=0,\\&z_{n+1}=z_n^2+c\end{align*}$$</div>
-        <div><canvas width="512" height="512" id="canvas"></canvas></div>
+        
+        <p>
+            <math>
+                <msub>
+                    <mi>z</mi>
+                    <mn>0</mn>
+                </msub>
+                <mo>=</mo>
+                <mn>0</mn>
+                <mo>,</mo>
+            </math>
+            <br/>
+            <math>
+                <msub>
+                    <mi>z</mi>
+                    <mrow>
+                        <mi>n</mi>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msub>
+                <mo>=</mo>
+                <mrow>
+                    <msubsup>
+                        <mi>z</mi>
+                        <mi>n</mi>
+                        <mn>2</mn>
+                    </msubsup>
+                    <mo>+</mo>
+                    <mi>c</mi>
+                </mrow>
+            </math>
+        </p>
+        
+        <canvas width="512" height="512" id="canvas"></canvas>
+        
         <script>
             var canvas = document.getElementById("canvas");
             var ctx = canvas.getContext("2d");

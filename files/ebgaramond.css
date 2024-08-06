@@ -1,0 +1,13 @@
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-display: swap;
+  src: url(ebgaramond_italic.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-display: swap;
+  src: url(ebgaramond.woff2) format('woff2');
+}

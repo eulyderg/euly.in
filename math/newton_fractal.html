@@ -3,20 +3,34 @@
     <head>
         <title>Newton's fractal</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.css" integrity="sha384-Juol1FqnotbkyZUT5Z7gUPjQ9gzlwCENvUZTpQBAPxtusdwFLRy382PSDx5UUJ4/" crossorigin="anonymous">
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/katex.min.js" integrity="sha384-97gW6UIJxnlKemYavrqDHSX3SiygeOwIZhwyOKRfSaf0JWKRVj9hLASHgFTzT+0O" crossorigin="anonymous"></script>
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.3/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
         <style>
             body { background: #FFFFFF; }
             h3 { margin: 0px; }
-            .math { display: inline-block; }
         </style>
     </head>
     <body>
         <h3>Newton's Fractal</h3>
         <noscript>This page requires JavaScript to function.</noscript>
         <div><a href="/">Back</a></div>
-        <div class="math">$$x^3+x^2+x+1=0$$</div>
+        <math>
+            <mrow>
+                <msup>
+                    <mi>x</mi>
+                    <mn>3</mn>
+                </msup>
+                <mo>+</mo>
+                <msup>
+                    <mi>x</mi>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mn>1</mn>
+            </mrow>
+            <mo>=</mo>
+            <mn>0</mn>
+        </math>
         <div><canvas width="512" height="512" id="canvas"></canvas></div>
         <script>
             var canvas = document.getElementById("canvas");
