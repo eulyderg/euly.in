@@ -56,7 +56,14 @@
             <div><a href="remove3dobjects.reg" download><code>remove3dobjects.reg</code></a></div>
             <div>Effects may take a moment to apply on their own; a restart will apply changes immediately.</div>
         </details>
-        <br/>
+        
+        <details>
+            <summary id="disablewindowscopilot" title="/#disablewindowscopilot"><b>Disable the Microsoft Copilot</b></summary>
+            <div>Microsoft has decided to add the LLM bullshit to your very own computer by default! Here is a registry flag to disable it.</div>
+            <div>Create a <code>DWORD (32bit integer)</code> key under <code>HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\WindowsCopilot</code> with the name <code>TurnOffWindowsCopilot</code>, and set its value to <code>1</code>.</div>
+            <div><a href="disablewindowscopilot.reg" download><code>disablewindowscopilot.reg</code></a></div>
+            <div>Seems to take effect immediately when I tested; if this does not work, a restart will apply changes immediately.</div>
+        </details>
         
     </body>
 </html>
