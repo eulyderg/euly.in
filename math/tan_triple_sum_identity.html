@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Tangent triple sum identity</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="https://euly.in/files/katex/katex.min.css">
+        <script defer src="https://euly.in/files/katex/katex.min.js"></script>
+        <script defer src="https://euly.in/files/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters:[{left:'$$', right:'$$', display:true},{left:'$', right:'$', display:false}]});"></script>
+    </head>
+    <body>
+        <div><b>Tangent triple sum identity</b></div>
+        <div>A surprising trigonometric result I first heard about from <a href="https://www.youtube.com/watch?v=FS7gmgiy5ds" target="_blank">this video by Dr. Barker!</a></div>
+        <div>If three angles form a euclidean triangle (sum to 180&deg;=&pi;), then they have this property where the sum of their tangents is the product of their tangents!</div>
+        <br/>
+        <div style="display:inline-block;">
+            $${a+b+c=\pi}\implies\tan(a)+\tan(b)+\tan(c)=\tan(a)\tan(b)\tan(c)$$
+        </div>
+        <br/>
+        <br/>
+        <div>Proof:</div>
+        <div style="display:inline-block;">
+            $$\small\begin{aligned}\tan(a)+\tan(b)+\tan(c)&=\tan(a)+\tan(b)+\tan(\pi-(a+b))\\
+                &=\tan(a)+\tan(b)+\tan(-(a+b))\\
+                &=\tan(a)+\tan(b)-\tan(a+b)\\
+                &=\tan(a)+\tan(b)-{\tan(a)+\tan(b)\over1-\tan(a)\tan(b)}\\
+                &={(\tan(a)+\tan(b))}{(1-\tan(a)\tan(b))\over1-\tan(a)\tan(b)}-{\tan(a)+\tan(b)\over1-\tan(a)\tan(b)}\\
+                &={(\tan(a)+\tan(b))(1-\tan(a)\tan(b))-(\tan(a)+\tan(b))\over1-\tan(a)\tan(b)}\\
+                &={\tan(a)+\tan(b)+(\tan(a)+\tan(b))(-\tan(a)\tan(b))-\tan(a)-\tan(b)\over1-\tan(a)\tan(b)}\\
+                &={-(\tan(a)\tan(b))(\tan(a)+\tan(b))\over1-\tan(a)\tan(b)}\\
+                &=\tan(a)\tan(b)\left(-{\tan(a)+\tan(b)\over1-\tan(a)\tan(b)}\right)\\
+                &=\tan(a)\tan(b)(-\tan(a+b))\\
+                &=\tan(a)\tan(b)\tan(-(a+b))\\
+                &=\tan(a)\tan(b)\tan(\pi-(a+b))\\
+                &=\tan(a)\tan(b)\tan(c)
+            \end{aligned}$$
+        </div>
+        <div><a href="/">Back</a></div>
+    </body>
+</html>
