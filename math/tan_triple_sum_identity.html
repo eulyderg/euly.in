@@ -5,35 +5,97 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="https://euly.in/files/katex/katex.min.css">
         <script defer src="https://euly.in/files/katex/katex.min.js"></script>
-        <script defer src="https://euly.in/files/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters:[{left:'$$', right:'$$', display:true},{left:'$', right:'$', display:false}]});"></script>
+        <script defer src="https://euly.in/files/katex/contrib/auto-render.min.js" onload="renderMathInElement(document.body, {delimiters:[{left:'$$', right:'$$', display:true},{left:'$', right:'$', display:false}], trust:true});"></script>
+        <style>
+            .katex-display {margin-top: 4pt; margin-bottom:4pt;}
+            @media print { .group {break-inside: avoid;} }
+        </style>
     </head>
     <body>
-        <div><b>Tangent triple sum identity</b></div>
+        <div><b>Tangent triple sum identity</b> &mdash; 28-MAR-2025</div>
+        <br/>
         <div>A surprising trigonometric result I first heard about from <a href="https://www.youtube.com/watch?v=FS7gmgiy5ds" target="_blank">this video by Dr. Barker!</a></div>
+        <div>That video opened by introducing first the specific example of tan(59&deg;)+tan(60&deg;)+tan(61&deg;) = tan(59&deg;)tan(60&deg;)tan(61&deg;), and then later generalizes the result to any three angles of a triangle.</div>
         <div>If three angles form a euclidean triangle (sum to 180&deg;=&pi;), then they have this property where the sum of their tangents is the product of their tangents!</div>
         <br/>
         <div style="display:inline-block;">
-            $${a+b+c=\pi}\implies\tan(a)+\tan(b)+\tan(c)=\tan(a)\tan(b)\tan(c)$$
+            $$\small{a+b+c=\pi}\implies\tan(a)+\tan(b)+\tan(c)=\tan(a)\tan(b)\tan(c)$$
         </div>
         <br/>
         <br/>
-        <div>Algebraic proof:</div>
+        <div>Algebraic proof (adapted from Dr. Barker):</u></div>
         <div style="display:inline-block;">
             $$\small\begin{aligned}\tan(a)+\tan(b)+\tan(c)&=\tan(a)+\tan(b)+\tan(\pi-(a+b))\\
-                &=\tan(a)+\tan(b)+\tan(-(a+b))\\
-                &=\tan(a)+\tan(b)-\tan(a+b)\\
-                &=\tan(a)+\tan(b)-{\tan(a)+\tan(b)\over1-\tan(a)\tan(b)}\\
+                &=\tan(a)+\tan(b)+\tan(-(a+b))^{\href{https://proofwiki.org/wiki/Tangent_of_Angle_plus_Straight_Angle}{\text{iii.}}}\\
+                &=\tan(a)+\tan(b)-\tan(a+b)^{\href{https://proofwiki.org/wiki/Tangent_Function_is_Odd}{\text{ii.}}}\\
+                &=\tan(a)+\tan(b)-{\tan(a)+\tan(b)\over1-\tan(a)\tan(b)}^{\href{https://proofwiki.org/wiki/Tangent_of_Sum}{\text{i.}}}\\
                 &={(\tan(a)+\tan(b))}{(1-\tan(a)\tan(b))\over1-\tan(a)\tan(b)}-{\tan(a)+\tan(b)\over1-\tan(a)\tan(b)}\\
                 &={(\tan(a)+\tan(b))(1-\tan(a)\tan(b))-(\tan(a)+\tan(b))\over1-\tan(a)\tan(b)}\\
                 &={\tan(a)+\tan(b)+(\tan(a)+\tan(b))(-\tan(a)\tan(b))-\tan(a)-\tan(b)\over1-\tan(a)\tan(b)}\\
                 &={-(\tan(a)\tan(b))(\tan(a)+\tan(b))\over1-\tan(a)\tan(b)}\\
                 &=\tan(a)\tan(b)\left(-{\tan(a)+\tan(b)\over1-\tan(a)\tan(b)}\right)\\
-                &=\tan(a)\tan(b)(-\tan(a+b))\\
-                &=\tan(a)\tan(b)\tan(-(a+b))\\
-                &=\tan(a)\tan(b)\tan(\pi-(a+b))\\
+                &=\tan(a)\tan(b)(-\tan(a+b))^{\href{https://proofwiki.org/wiki/Tangent_of_Sum}{\text{i.}}}\\
+                &=\tan(a)\tan(b)\tan(-(a+b))^{\href{https://proofwiki.org/wiki/Tangent_Function_is_Odd}{\text{ii.}}}\\
+                &=\tan(a)\tan(b)\tan(\pi-(a+b))^{\href{https://proofwiki.org/wiki/Tangent_of_Angle_plus_Straight_Angle}{\text{iii.}}}\\
                 &=\tan(a)\tan(b)\tan(c)
             \end{aligned}$$
         </div>
+        <br/>
+        <br/>
+        <div>Properties of the tangent function used:</div>
+        <ol style="margin: 0px; list-style-type: lower-roman;">
+            <li><a href="https://proofwiki.org/wiki/Tangent_of_Sum" target="_blank">Tangent of a sum</a></li>
+            <li><a href="https://proofwiki.org/wiki/Tangent_Function_is_Odd" target="_blank">Tangent is odd</a></li>
+            <li><a href="https://proofwiki.org/wiki/Tangent_of_Angle_plus_Straight_Angle" target="_blank">Tangent is periodic with a period of &pi;</a></li>
+        </ol>
+        <br/>
+        <br/>
+        <div>As can be seen above, I dug into <a href="https://proofwiki.org/" target="_blank">Pr&infin;fWiki</a> to find citations for the various properties leveraged in Dr. Barker's proof of this property.</div>
+        <div>In the process of searching, I found that site had an <a href="https://proofwiki.org/wiki/Sum_of_Tangents_of_Angles_in_Triangle" target="_blank">alternate algebraic proof</a> of this same property!</div>
+        <br/>
+        <br/>
+        <div>Algebraic proof (adapted from Pr&infin;fWiki):</div>
+        <div style="display:inline-block;">
+            $$\small\begin{aligned}
+                {\tan(a)+\tan(b)+\tan(c)-\tan(a)\tan(b)\tan(c)\over1-\tan(b)\tan(c)-\tan(c)\tan(a)-\tan(a)\tan(b)}&=\tan(a+b+c)^{\href{https://proofwiki.org/wiki/Tangent_of_Sum_of_Three_Angles}{\text{i.}}}\\
+                &=\tan(\pi)\\
+                &=0^{\href{https://proofwiki.org/wiki/Tangent_of_Straight_Angle}{\text{ii.}}}\\
+                \tan(a)+\tan(b)+\tan(c)-\tan(a)\tan(b)\tan(c)&=0\\
+                \tan(a)+\tan(b)+\tan(c)&=\tan(a)\tan(b)\tan(c)
+            \end{aligned}$$
+        </div>
+        <br/>
+        <br/>
+        <div>Key properties used:</div>
+        <ol style="margin: 0px; list-style-type: lower-roman;">
+            <li><a href="https://proofwiki.org/wiki/Tangent_of_Sum_of_Three_Angles" target="_blank">Tangent of a sum of three angles</a></li>
+            <li><a href="https://proofwiki.org/wiki/Tangent_of_Straight_Angle" target="_blank">tan(&pi;) = 0</a></li>
+        </ol>
+        <br/>
+        <div>a + b + c = &pi; is leveraged for the second step as the hypothesis.</div>
+        <br/>
+        <br/>
+        <div>Dr. Barker also remarked toward the end of the video that they would love to see a geometric proof of this property, especially considering that the sole hypothesis needed to prove it is that the angles form a euclidean triangle.  I share this sentiment, and may attempt to find a nice geometric argument for this and update this page.</div>
+        <br/>
+        <div>Additionally, after introducing this to a friend of mine, they were worried that the proof adapted from Dr. Barker might fail in the case of tan(a)tan(b) = 1, because 1 - tan(a)tan(b) is divided through the denominator.  Shortly after, they produced a proof that this case can't occur where tan(c) is defined anyway.</div>
+        <br/>
+        <small>
+            <div>
+                That proof justifying that the problematic case is already excluded, adapted from my friend Lo&iuml;c Taleb:<br/>
+                <div style="display: inline-block;">
+                    $$\begin{aligned}
+                        \tan(a)\tan(b)=1&\implies{\sin(a)\over\cos(a)}{\sin(b)\over\cos(b)}=1\\
+                        &\implies{\sin(a)\sin(b)}={\cos(b)\cos(b)}\\
+                        &\implies0={\cos(b)\cos(b)}-{\sin(a)\sin(b)}\\
+                        &\implies0=\cos(a+b)\\
+                        &\implies\exists k\in\mathbb Z,\ a+b={\pi\over2}+k\pi\\
+                        &\implies\exists k\in\mathbb Z,\ c={\pi\over2}+k\pi\\
+                        &\implies\tan(c)\text{ isn't defined.}
+                    \end{aligned}$$
+                </div>
+            </div>
+        </small>
+        <br/>
         <div><a href="/">Back</a></div>
     </body>
 </html>
